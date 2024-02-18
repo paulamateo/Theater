@@ -1,6 +1,5 @@
-# Theater
-
 ## Comandos
+### Docker
 ### Estructura del proyecto
 Creación capas DATA, MODELS, BUSINESS y API
 
