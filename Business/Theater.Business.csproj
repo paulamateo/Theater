@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\Theater.Models.csproj" />
+    <ProjectReference Include="..\Data\Theater.Data.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

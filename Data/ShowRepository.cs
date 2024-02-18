@@ -1,38 +1,50 @@
-﻿using System.Dynamic;
+﻿using System.Text;
 using System.Text.Json;
 using Theater.Models;
 
 namespace Theater.Data {
 
-    public class ShowRepository {
-        private readonly string _fileData = "shows_data.json";
-        private int nextId = 0;
+    public class ShowRepository : IShowRepository {
         private List<Show> Shows { get; }
+        private readonly string _fileData = "shows_data.json";
+        private int nextId = 1;
 
-        private SaveToJson() {
+        public ShowRepository() {
+            Shows = LoadFromJson();
+        }
+
+
+        private void SaveToJson() {
             try {
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                string jsonString = JsonSerializer.Serialize(options);
-                File.WriteAllText(_fileData, jsonString);
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(Shows, options);
+                File.WriteAllText(_fileData, jsonString, Encoding.UTF8);
             }catch (Exception e) {
                 Console.WriteLine($"Error: {e.Message}");
             }
         }
 
         private List<Show> LoadFromJson() {
-            if (File.Exists(_fileData)) {
-                var jsonString = File.ReadAllText(_fileData);
-                return JsonSerializer.Deserialize<List<Show>>(jsonString) ?? new List<Show>();
-            }else {
-                return new List<Show>(); 
+            try {
+                if (File.Exists(_fileData)) {
+                    var jsonString = File.ReadAllText(_fileData, Encoding.UTF8);
+                    return JsonSerializer.Deserialize<List<Show>>(jsonString) ?? new List<Show>();
+                }else {
+                    return new List<Show>(); 
+                }
+            }catch (Exception e) {
+                Console.WriteLine($"Error: {e.Message}");
+                return new List<Show>();
             }
         }
 
-        public List<Show> GetAllShows() => LoadFromJson();
-        public Show? GetShowById() => ;
+        public List<Show> GetAllShows() => Shows;
+
+        public Show? GetShowById(int showId) => Shows.FirstOrDefault(s => s.ShowId == showId);
 
         public void AddShow(Show show) {
             show.ShowId = nextId++;
+            show.Seats = 135;
             Shows.Add(show);
             SaveToJson();
         }

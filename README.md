@@ -24,8 +24,8 @@ Referencias de unas capas en otras
 
       dotnet add Data/Theater.Data.csproj reference Models/Theater.Models.csproj
       dotnet add Business/Theater.Business.csproj reference Models/Theater.Models.csproj
+      dotnet add Business/Theater.Business.csproj reference Data/Theater.Data.csproj
       dotnet add API/Theater.API.csproj reference Business/Theater.Business.csproj
       dotnet add API/Theater.API.csproj reference Data/Theater.Data.csproj
       dotnet add API/Theater.API.csproj reference Models/Theater.Models.csproj
 
-### Docker

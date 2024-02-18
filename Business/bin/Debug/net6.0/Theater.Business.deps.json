@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Theater.Business/1.0.0": {
+        "dependencies": {
+          "Theater.Data": "1.0.0",
+          "Theater.Models": "1.0.0"
+        },
+        "runtime": {
+          "Theater.Business.dll": {}
+        }
+      },
+      "Theater.Data/1.0.0": {
+        "dependencies": {
+          "Theater.Models": "1.0.0"
+        },
+        "runtime": {
+          "Theater.Data.dll": {}
+        }
+      },
+      "Theater.Models/1.0.0": {
+        "runtime": {
+          "Theater.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Theater.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Theater.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Theater.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

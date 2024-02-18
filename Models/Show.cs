@@ -13,7 +13,6 @@ public class Show {
     public string? Poster { get; set; }
     public string? Banner { get; set; }
     public string? Scene { get; set; }
-    public int Seats = 135;
-    // public List<Seat> ReservedSeats { get}
+    public int Seats { get; set; }
     public string? Overview { get; set; }
 }
