@@ -1,6 +1,4 @@
 ## Comandos
-### Testear API en Hoppscotch
-[![Run in Hoppscotch](https://hopp.sh/badge.svg)](https://hopp.sh/r/oqI1rjtgCiAB)
 ### Estructura del proyecto
 Creación capas DATA, MODELS, BUSINESS y API
 
