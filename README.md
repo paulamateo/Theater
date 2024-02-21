@@ -1,4 +1,18 @@
 ## Comandos
+### Migraciones
+
+     dotnet ef migrations add Migrations -p Data/ -s API/
+
+### Docker
+
+     docker-compose up --build --force-recreate -d 
+     docker-compose down
+     docker-compose down -v
+
+### Entity Framework
+
+     dotnet tool install --global dotnet-ef --version 6.*
+
 ### Estructura del proyecto
 Creación capas DATA, MODELS, BUSINESS y API
 

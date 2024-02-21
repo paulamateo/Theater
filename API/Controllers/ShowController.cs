@@ -1,5 +1,4 @@
 using Theater.Models;
-using Theater.Data;
 using Theater.Business;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,6 +26,18 @@ public class ShowController : ControllerBase {
 
         return show;
     }
+
+    [HttpGet("{genre}")] //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+    // public ActionResult<Show> GetShowsByGenre(string genre) {
+    //     var genre = _showService.GetAllGenres(showId);
+
+    //     if(genre == null)
+    //         return NotFound();
+
+    //     return show;
+    // }
+
+    //ID
 
     [HttpPost]
     public IActionResult Create(Show show) {            

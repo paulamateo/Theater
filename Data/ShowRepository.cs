@@ -1,69 +1,93 @@
-﻿using System.Text;
+using System.Text;
 using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 using Theater.Models;
 
 namespace Theater.Data {
-
+    
     public class ShowRepository : IShowRepository {
-        private List<Show> Shows { get; }
-        private readonly string _fileData = "shows_data.json";
-        private int nextId = 1;
+        private readonly TheaterContext _context;
 
-        public ShowRepository() {
-            Shows = LoadFromJson();
+        public ShowRepository(TheaterContext context) {
+            _context = context;
         }
 
-
-        private void SaveToJson() {
-            try {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(Shows, options);
-                File.WriteAllText(_fileData, jsonString, Encoding.UTF8);
-            }catch (Exception e) {
-                Console.WriteLine($"Error: {e.Message}");
-            }
+        public void SaveChanges() {
+            _context.SaveChanges();
         }
 
-        private List<Show> LoadFromJson() {
-            try {
-                if (File.Exists(_fileData)) {
-                    var jsonString = File.ReadAllText(_fileData, Encoding.UTF8);
-                    return JsonSerializer.Deserialize<List<Show>>(jsonString) ?? new List<Show>();
-                }else {
-                    return new List<Show>(); 
-                }
-            }catch (Exception e) {
-                Console.WriteLine($"Error: {e.Message}");
-                return new List<Show>();
-            }
+        //SHOWS
+        public List<Show> GetAllShows() {
+            return _context.Shows.ToList();
         }
 
-        public List<Show> GetAllShows() => Shows;
-
-        public Show? GetShowById(int showId) => Shows.FirstOrDefault(s => s.ShowId == showId);
+        public Show? GetShowById(int showId) {
+            return _context.Shows.FirstOrDefault(s => s.ShowId == showId);
+        }
 
         public void AddShow(Show show) {
-            show.ShowId = nextId++;
-            show.QuantitySeats = 135;
-            Shows.Add(show);
-            SaveToJson();
+            _context.Shows.Add(show);
+            SaveChanges();
         }
 
         public void DeleteShow(int showId) {
             var show = GetShowById(showId);
-            if (show is null)
-                return;
-            Shows.Remove(show);
-            SaveToJson();
+            if (show is null) {
+                throw new KeyNotFoundException("Show not found.");
+            }
+            _context.Shows.Remove(show);
+            SaveChanges(); 
         }
 
         public void UpdateShow(Show show) {
-            var index = Shows.FindIndex(s => s.ShowId == show.ShowId);
-            if (index == -1)
-                return;
-            Shows[index] = show;
-            SaveToJson();
+            _context.Entry(show).State = EntityState.Modified;
+           SaveChanges();
         }
+
+        //GENRES
+
+        //metodo LISTAR TODOS LOS GENEROS
+        // public List<string> GetAllGenres() {
+        //     var shows = GetAllShows().ToList();
+        //     foreach (var show in shows) {
+
+        //     }
+        // }
+
+
+
+
+//             foreach (var show in shows) {
+//                 if (!string.IsNullOrEmpty(show.Genre)) {
+//                     allGenres.Add(show.Genre);
+//                 }
+//                 if (show.Genres != null && show.Genres.Count > 0) {
+//                     allGenres.UnionWith(show.Genres);
+//                 }
+//             }
+
+//             return new List<string>(allGenres);
+//         }
+
+
+        //metodo GET BY NAME
+       
+
+        //metodo LISTAR TODAS LAS OBRAS POR GÉNERO
+
+
+        //SEATS
+        //metodo LISTAR ASIENTOS BY OBRA
+        // public List<Seat> GetSeatsByShow(int showId) {
+        //     var show = GetShowById(showId);
+        //     if (show is null) {
+        //         throw new KeyNotFoundException("Show not found.");
+        //     }
+           
+        // }
+
+  
+    
 
     }
 

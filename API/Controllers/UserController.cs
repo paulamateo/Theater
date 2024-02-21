@@ -1,5 +1,4 @@
 using Theater.Models;
-using Theater.Data;
 using Theater.Business;
 using Microsoft.AspNetCore.Mvc;
 
