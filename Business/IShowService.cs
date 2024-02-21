@@ -1,7 +1,6 @@
 using Theater.Models;
 
 namespace Theater.Business { 
-
     public interface IShowService {
         List<Show> GetAllShows();
         Show? GetShowById(int showId);
@@ -9,5 +8,4 @@ namespace Theater.Business {
         void DeleteShow(int showId);
         void UpdateShow(Show show);
     }
-
 }

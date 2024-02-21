@@ -44,7 +44,7 @@ namespace Theater.Data {
 
         public void AddShow(Show show) {
             show.ShowId = nextId++;
-            show.Seats = 135;
+            show.QuantitySeats = 135;
             Shows.Add(show);
             SaveToJson();
         }
