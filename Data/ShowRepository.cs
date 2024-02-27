@@ -7,6 +7,7 @@ namespace Theater.Data {
     
     public class ShowRepository : IShowRepository {
         private readonly TheaterContext _context;
+        private int nextId;
 
         public ShowRepository(TheaterContext context) {
             _context = context;
@@ -26,6 +27,8 @@ namespace Theater.Data {
         }
 
         public void AddShow(Show show) {
+            show.ShowId = nextId++;
+            show.QuantitySeats = 135;
             _context.Shows.Add(show);
             SaveChanges();
         }

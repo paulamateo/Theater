@@ -5,6 +5,7 @@ namespace Theater.Data {
     
     public class UserRepository : IUserRepository {
         private readonly TheaterContext _context;
+        private int nextId;
 
         public UserRepository(TheaterContext context) {
             _context = context;
@@ -19,6 +20,7 @@ namespace Theater.Data {
         }
 
         public void AddUser(User user) {
+            user.UserId = nextId++;
             _context.Users.Add(user);
         }
 

@@ -7,6 +7,7 @@ namespace Theater.Models {
         public List<Seat>? SeatsReserved { get; set; }
         public decimal TotalPrice { get; set; }
 
+
         //USER, SHOW??
 
     }
