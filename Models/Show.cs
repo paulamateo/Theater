@@ -8,7 +8,6 @@ namespace Theater.Models {
         public string? Author { get; set; }
         public string? Director { get; set; }
         public string? Genre { get; set; }
-        public decimal Price { get; set; }
         public int Age { get; set; }
         public DateTime Date { get; set; }
         public string? Length { get; set; }
@@ -16,8 +15,8 @@ namespace Theater.Models {
         public string? Banner { get; set; }
         public string? Scene { get; set; }
         public string? Overview { get; set; }
-        public int QuantitySeats { get; set; }
-        public List<Seat>? Seats { get; set; }
+        public List<Session>? Sessions { get; set; }
+
 
         // public Show() {
         //     Genres = new List<string>();

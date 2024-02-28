@@ -11,6 +11,7 @@ namespace Theater.Data {
             _context = context;
         }
 
+        //USER
         public List<User> GetAllUsers() {
             return _context.Users.ToList();
         }
@@ -35,6 +36,9 @@ namespace Theater.Data {
         public void UpdateUser(User user) {
             _context.Entry(user).State = EntityState.Modified;
         }
+
+        //SESSIONS
+        
         
     }
     

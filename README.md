@@ -3,6 +3,12 @@
 
      dotnet ef migrations add Migrations -p Data/ -s API/
 
+Otras migraciones:
+
+     dotnet ef migrations add InitialCreate -p ./Data/Theater.Data.csproj -s ./API/Theater.API.csproj
+
+     dotnet ef database update  -p ./Data/Theater.Data.csproj -s ./API/Theater.API.csproj
+
 ### Docker
 
      docker-compose up --build --force-recreate -d 
@@ -34,10 +40,10 @@ Referencias de las capas en la solución
 
 Referencias de unas capas en otras
 
-      dotnet add Data/Theater.Data.csproj reference Models/Theater.Models.csproj
-      dotnet add Business/Theater.Business.csproj reference Models/Theater.Models.csproj
-      dotnet add Business/Theater.Business.csproj reference Data/Theater.Data.csproj
-      dotnet add API/Theater.API.csproj reference Business/Theater.Business.csproj
-      dotnet add API/Theater.API.csproj reference Data/Theater.Data.csproj
-      dotnet add API/Theater.API.csproj reference Models/Theater.Models.csproj
+     dotnet add Data/Theater.Data.csproj reference Models/Theater.Models.csproj
+     dotnet add Business/Theater.Business.csproj reference Models/Theater.Models.csproj
+     dotnet add Business/Theater.Business.csproj reference Data/Theater.Data.csproj
+     dotnet add API/Theater.API.csproj reference Business/Theater.Business.csproj
+     dotnet add API/Theater.API.csproj reference Data/Theater.Data.csproj
+     dotnet add API/Theater.API.csproj reference Models/Theater.Models.csproj
 

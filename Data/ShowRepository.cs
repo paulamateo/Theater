@@ -28,7 +28,6 @@ namespace Theater.Data {
 
         public void AddShow(Show show) {
             show.ShowId = nextId++;
-            show.QuantitySeats = 135;
             _context.Shows.Add(show);
             SaveChanges();
         }
@@ -47,50 +46,33 @@ namespace Theater.Data {
            SaveChanges();
         }
 
-        //GENRES
+        //SESSIONS
+        public List<Session> GetAllSessionsByShow(int showId) { //{showId}/session
+            return _context.Sessions.ToList();
+        } 
 
-        //metodo LISTAR TODOS LOS GENEROS
-        // public List<string> GetAllGenres() {
-        //     var shows = GetAllShows().ToList();
-        //     foreach (var show in shows) {
+        public Session? GetSessionById(int sessionId) { //{showId}/session/1
+            return _context.Sessions.FirstOrDefault(s => s.SessionId == sessionId);
+        }
 
-        //     }
-        // }
+        public void AddSession(Session session) { //{showId}/session
+            _context.Sessions.Add(session);
+            SaveChanges();
+        }
 
+        public void DeleteSession(int sessionId) { //{showId}/session/1
+            var session = GetSessionById(sessionId);
+            if (session is null) {
+                throw new KeyNotFoundException("Session not found.");
+            }
+            _context.Sessions.Remove(session);
+            SaveChanges(); 
+        }
 
-
-
-//             foreach (var show in shows) {
-//                 if (!string.IsNullOrEmpty(show.Genre)) {
-//                     allGenres.Add(show.Genre);
-//                 }
-//                 if (show.Genres != null && show.Genres.Count > 0) {
-//                     allGenres.UnionWith(show.Genres);
-//                 }
-//             }
-
-//             return new List<string>(allGenres);
-//         }
-
-
-        //metodo GET BY NAME
-       
-
-        //metodo LISTAR TODAS LAS OBRAS POR GÉNERO
-
-
-        //SEATS
-        //metodo LISTAR ASIENTOS BY OBRA
-        // public List<Seat> GetSeatsByShow(int showId) {
-        //     var show = GetShowById(showId);
-        //     if (show is null) {
-        //         throw new KeyNotFoundException("Show not found.");
-        //     }
-           
-        // }
-
-  
-    
+        public void UpdateSession(Session session) { //{showId}/session/1
+            _context.Entry(session).State = EntityState.Modified;
+           SaveChanges();
+        }
 
     }
 

@@ -10,5 +10,6 @@ namespace Theater.Models {
         public string? Password { get; set; }
         public string? PhoneNumber { get; set; }
         public bool IsAdmin { get; set; }
+        public List<Reservation>? Reservations { get; set; }
     }
 }

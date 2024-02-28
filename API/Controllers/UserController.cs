@@ -13,6 +13,7 @@ public class UserController : ControllerBase {
         _userService = userService;
     }
 
+    //USERS
     [HttpGet]
     public ActionResult<List<User>> GetAll() =>
         _userService.GetAllUsers();

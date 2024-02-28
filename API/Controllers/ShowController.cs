@@ -13,7 +13,7 @@ public class ShowController : ControllerBase {
         _showService = showService;
     }
 
-    [HttpGet]
+    [HttpGet()]
     public ActionResult<List<Show>> GetAll() =>
         _showService.GetAllShows();
 
@@ -26,18 +26,6 @@ public class ShowController : ControllerBase {
 
         return show;
     }
-
-    [HttpGet("{genre}")] //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-    // public ActionResult<Show> GetShowsByGenre(string genre) {
-    //     var genre = _showService.GetAllGenres(showId);
-
-    //     if(genre == null)
-    //         return NotFound();
-
-    //     return show;
-    // }
-
-    //ID
 
     [HttpPost]
     public IActionResult Create(Show show) {            
@@ -69,5 +57,11 @@ public class ShowController : ControllerBase {
     
         return NoContent();
     }
+
+    //SESSIONS
+    // [HttpGet("{showId}/session")]
+    // public ActionResult<List<Session>> GetAllSessions() {
+
+    // }
 
 }
