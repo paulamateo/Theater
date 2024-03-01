@@ -31,8 +31,19 @@ namespace Theater.Data {
             );
 
             modelBuilder.Entity<Show>().HasData(
-                new Show { ShowId = 1, Title = "El Fantasma de la Ópera", Author = "Gaston Leroux", Director = "Sara García", Genre = "Musical", Age = 18, Length = "2h 30min" },
-                new Show { ShowId = 2, Title = "Macbeth", Author = "William Shakespeare", Director = "Carlos Montoya", Genre = "Tragedia", Age = 16, Length = "2h 40min" },
+                new Show { 
+                    ShowId = 1, 
+                    Title = "El Fantasma de la Ópera", 
+                    Author = "Gaston Leroux", 
+                    Director = "Sara García", 
+                    Genre = "Musical", 
+                    Age = 18, 
+                    Length = "2h 30min", 
+                    Overview = "En la majestuosa Ópera Garnier de París, 'El Fantasma de la Ópera' despliega una intrigante trama donde la talentosa soprano Christine Daaé se encuentra en medio de un apasionante triángulo amoroso. Entre el enigmático Fantasma, un genio musical desfigurado que la guía desde las sombras, y el apasionado vizconde Raoul de Chagny, la historia explora los límites entre la belleza y la fealdad, la obsesión y la devoción, creando una atmósfera fascinante en el esplendor de la ópera parisina. La narrativa se teje con emociones intensas, llevando al espectador a las profundidades de la pasión humana, la tragedia y el misterio en un escenario donde la música y el amor convergen de manera inolvidable."
+                },
+                new Show { 
+                    ShowId = 2, 
+                    Title = "Macbeth", Author = "William Shakespeare", Director = "Carlos Montoya", Genre = "Tragedia", Age = 16, Length = "2h 40min" },
                 new Show { ShowId = 3, Title = "Hamlet", Author = "William Shakespeare", Director = "Ana Sánchez", Genre = "Musical", Age = 14, Length = "2h 15min" },
                 new Show { ShowId = 4, Title = "El Cascanueces", Author = "Andrew Lloyd Webber", Director = "Daniela Méndez", Genre = "Ballet", Age = 16, Length = "2h 30min" },
                 new Show { ShowId = 5, Title = "Divina Comedia", Author = "Dante Alighieri", Director = "Luis Rosa", Genre = "Drama", Age = 18, Length = "2h 30min" },
