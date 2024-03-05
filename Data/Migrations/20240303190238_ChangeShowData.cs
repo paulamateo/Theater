@@ -4,7 +4,7 @@
 
 namespace Theater.Data.Migrations
 {
-    public partial class ProblemAPI : Migration
+    public partial class ChangeShowData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -20,6 +20,10 @@ namespace Theater.Business {
 
         public void UpdateShow(Show show) => _showRepository.UpdateShow(show);
 
+        public List<string> GetAllGenres() => _showRepository.GetAllGenres();
+        
+        public List<Show> GetShowsByGenre(string genre) => _showRepository.GetShowsByGenre(genre);
+
     }
 
 }

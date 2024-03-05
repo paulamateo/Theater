@@ -17,8 +17,6 @@ services:
             - backend
         volumes:
             - sqlserver-data:/var/opt/mssql #mounted volumen in Docker
-            # - D:/sqlserver-data:/var/opt/mssql  #bind mounted in Windows
-            #- ~/sqlserver-data:/var/opt/mssql  #bind mounted in Linux/Mac
         environment:    #more secure if you use an .env file
             - ACCEPT_EULA=Y
             - MSSQL_SA_PASSWORD=<YourStrong@Passw0rd>
@@ -34,6 +32,8 @@ services:
           dockerfile: API/Dockerfile
         depends_on:
             - db    #API without db running is useless
+        environment:
+            - DOCKER_CONTAINER=true
 
    # web:
         #container_name: webContainer

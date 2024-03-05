@@ -46,6 +46,18 @@ namespace Theater.Data {
            SaveChanges();
         }
 
+
+        //GENRES
+        public List<string> GetAllGenres() {
+            return _context.Shows.Select(s => s.Genre).Distinct().ToList()!;
+        }
+
+
+        public List<Show> GetShowsByGenre(string genre) {
+            return _context.Shows.Where(s => s.Genre == genre).ToList();
+        }
+
+
         //SESSIONS
         public List<Session> GetAllSessionsByShow(int showId) { //{showId}/session
             return _context.Sessions.ToList();

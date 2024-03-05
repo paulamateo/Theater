@@ -30,3 +30,5 @@ C:\Users\S2-PC00\Documents\Theater\Data\obj\Debug\net6.0\Theater.Data.pdb
 C:\Users\S2-PC00\Documents\Theater\Data\obj\Debug\net6.0\ref\Theater.Data.dll
 C:\Users\S2-PC00\Documents\Theater\Data\bin\Debug\net6.0\Theater.Data.runtimeconfig.json
 C:\Users\S2-PC00\Documents\Theater\Data\obj\Debug\net6.0\Theater.Data.genruntimeconfig.cache
+C:\Users\paula\Documents\Theater\Data\bin\Debug\net6.0\Theater.Data.runtimeconfig.json
+C:\Users\paula\Documents\Theater\Data\obj\Debug\net6.0\Theater.Data.genruntimeconfig.cache
