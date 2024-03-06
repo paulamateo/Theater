@@ -10,7 +10,6 @@ namespace Theater.Models {
         public List<Seat>? ReservedSeating { get; set; }
         [Required]
         public int ShowId { get; set; }
-        public Show? Show { get; set; } 
         public List<Reservation>? Reservations { get; set; }
     }
 }

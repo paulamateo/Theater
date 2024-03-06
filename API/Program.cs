@@ -11,10 +11,12 @@ var connectionString = builder.Configuration.GetConnectionString(connectionKeySt
 builder.Services.AddDbContext<TheaterContext>(options =>
     options.UseSqlServer(connectionString));
 
-    builder.Services.AddScoped<IShowRepository, ShowRepository>();
+builder.Services.AddScoped<IShowRepository, ShowRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ISessionRepository, SessionRepository>();
 builder.Services.AddScoped<IShowService, ShowService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ISessionService, SessionService>();
 
 
   

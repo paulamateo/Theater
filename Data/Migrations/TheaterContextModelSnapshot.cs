@@ -102,14 +102,14 @@ namespace Theater.Data.Migrations
                         {
                             SessionId = 1,
                             Hour = new TimeSpan(0, 10, 30, 0, 0),
-                            Seats = 54,
+                            Seats = 60,
                             ShowId = 1
                         },
                         new
                         {
                             SessionId = 2,
                             Hour = new TimeSpan(0, 21, 30, 0, 0),
-                            Seats = 54,
+                            Seats = 60,
                             ShowId = 1
                         });
                 });
@@ -442,13 +442,11 @@ namespace Theater.Data.Migrations
 
             modelBuilder.Entity("Theater.Models.Session", b =>
                 {
-                    b.HasOne("Theater.Models.Show", "Show")
+                    b.HasOne("Theater.Models.Show", null)
                         .WithMany("Sessions")
                         .HasForeignKey("ShowId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Show");
                 });
 
             modelBuilder.Entity("Theater.Models.Reservation", b =>

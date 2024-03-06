@@ -33,7 +33,7 @@ services:
         depends_on:
             - db    #API without db running is useless
         environment:
-            - DOCKER_CONTAINER=true
+            - container=true
 
    # web:
         #container_name: webContainer

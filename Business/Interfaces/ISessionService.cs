@@ -1,19 +1,7 @@
 using Theater.Models;
 
 namespace Theater.Business { 
-    public interface IShowService {
-        //SHOWS
-        List<Show> GetAllShows();
-        Show? GetShowById(int showId);
-        void AddShow(Show show);
-        void DeleteShow(int showId);
-        void UpdateShow(Show show);
-
-        //GENRES
-        List<string> GetAllGenres();
-        List<Show> GetShowsByGenre(string genre);
-
-        //SESSIONS
+    public interface ISessionService {
         List<Session> GetAllSessionsByShow(int showId);
         Session? GetSessionById(int showId, int sessionId);
         void AddSession(int showId, Session session);

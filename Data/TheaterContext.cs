@@ -26,11 +26,6 @@ namespace Theater.Data {
                 .HasMany(s => s.Reservations)
                 .WithOne(r => r.Session)
                 .HasForeignKey(r => r.SessionId);
-
-            modelBuilder.Entity<Show>()
-                .HasMany(s => s.Sessions)
-                .WithOne(s => s.Show)
-                .HasForeignKey(s => s.ShowId);  
             
             modelBuilder.Entity<User>().HasData(
                 new User { UserId = 1, UserName = "Paula", UserLastname = "Mateo", Email = "a26619@svalero.com", Password = "1234", PhoneNumber = "123456789", IsAdmin = true},
@@ -221,8 +216,8 @@ namespace Theater.Data {
             );
 
             modelBuilder.Entity<Session>().HasData(
-                new Session { SessionId = 1, Hour = new TimeSpan(10, 30, 0), Seats = 54, ShowId = 1 },
-                new Session { SessionId = 2, Hour = new TimeSpan(21, 30, 0), Seats = 54, ShowId = 1 }
+                new Session { SessionId = 1, Hour = new TimeSpan(10, 30, 0), Seats = 60, ShowId = 1 },
+                new Session { SessionId = 2, Hour = new TimeSpan(21, 30, 0), Seats = 60, ShowId = 1 }
             );
 
         }

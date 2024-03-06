@@ -20,17 +20,6 @@ namespace Theater.Business {
         //GENRES
         public List<string> GetAllGenres() => _showRepository.GetAllGenres();
         public List<Show> GetShowsByGenre(string genre) => _showRepository.GetShowsByGenre(genre);
-
-        //SESSIONS
-        public List<Session> GetAllSessionsByShow(int showId)  => _showRepository.GetAllSessionsByShow(showId);
-        public Session? GetSessionById(int showId, int sessionId) => _showRepository.GetSessionById(showId, sessionId);
-        public void AddSession(int showId, Session session) => _showRepository.AddSession(showId, session);
-        public void DeleteSession(int showId, int sessionId) => _showRepository.DeleteSession(showId, sessionId);
-        public void UpdateSession(int showId, int sessionId, Session session) => _showRepository.UpdateSession(showId, sessionId, session);
-
-
-        public List<Session> GetAllSessions() => _showRepository.GetAllSessions();
-        public List<Session> GetSessionsByShowId(int showId) => _showRepository.GetSessionsByShowId(showId);
     }
 
 }

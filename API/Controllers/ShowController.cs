@@ -8,21 +8,12 @@ namespace Theater.Controllers;
 [Route("[controller]")]
 public class ShowController : ControllerBase {
     private readonly IShowService _showService;
+    private readonly ISessionService _sessionService;
 
-    public ShowController (IShowService showService) {
+    public ShowController (IShowService showService, ISessionService sessionService) {
         _showService = showService;
+        _sessionService = sessionService;
     }
-
-    [HttpGet("/Sessions")]
-    public ActionResult<List<Session>> GetAllSessions() =>
-        _showService.GetAllSessions();
-    
-    [HttpGet("{showId}/Session")]
-    public ActionResult<List<Session>> GetSessionsByShowId(int showId) =>
-        _showService.GetSessionsByShowId(showId);
-
-
-
 
     //SHOWS
     [HttpGet()]
@@ -71,65 +62,50 @@ public class ShowController : ControllerBase {
     }
 
 
-    //GENRES
-    [HttpGet("/Genre")]
-    public ActionResult<List<string>> GetAllGenres() =>
-        _showService.GetAllGenres();
+    //SESSIONS
+    [HttpGet("{showId}/Session")]
+    public ActionResult<List<Session>> GetSessionsByShowId(int showId) =>
+        _sessionService.GetSessionsByShowId(showId);
 
-    [HttpGet("/Genre/{nameGenre}")]
-    public ActionResult<List<Show>> GetShowsByGenre(string nameGenre) {
-        var shows = _showService.GetShowsByGenre(nameGenre);
-        if (shows == null) {
+    [HttpGet("{showId}/Session/{sessionId}")]
+    public ActionResult<Session> GetSession(int showId, int sessionId) {
+        var session = _sessionService.GetSessionById(showId, sessionId);
+
+        if(session == null)
             return NotFound();
-        }
-        return shows;
+
+        return session;
     }
 
+    [HttpPost("{showId}/Session")]
+    public IActionResult CreateSession(int showId, Session session) {            
+        _sessionService.AddSession(showId, session);
+        return CreatedAtAction(nameof(GetSession), new { sessionId = session.SessionId }, session);
+    }
 
-    //SESSIONS
-    // [HttpGet("{showId}/Session")]
-    // public ActionResult<List<Session>> GetAllSessionsByShow(int showId) =>
-    //     _showService.GetAllSessionsByShow(showId);
-
-    // [HttpGet("{showId}/Session/{sessionId}")]
-    // public ActionResult<Session> GetSession(int showId, int sessionId) {
-    //     var session = _showService.GetSessionById(showId, sessionId);
-
-    //     if(session == null)
-    //         return NotFound();
-
-    //     return session;
-    // }
-
-    // [HttpPost("{showId}/Session")]
-    // public IActionResult CreateSession(int showId, Session session) {            
-    //     _showService.AddSession(showId, session);
-    //     return CreatedAtAction(nameof(GetSession), new { sessionId = session.SessionId }, session);
-    // }
-
-    // [HttpDelete("{showId}/Session/{sessionId}")]
-    // public IActionResult DeleteSession(int showId, int sessionId) {
-    //     var show = _showService.GetShowById(showId);
+    [HttpDelete("{showId}/Session/{sessionId}")]
+    public IActionResult DeleteSession(int showId, int sessionId) {
+        var show = _showService.GetShowById(showId);
     
-    //     if (show is null)
-    //         return NotFound();
+        if (show is null)
+            return NotFound();
         
-    //     _showService.DeleteSession(showId, sessionId);
+        _sessionService.DeleteSession(showId, sessionId);
     
-    //     return NoContent();
-    // }
+        return NoContent();
+    }
 
-    // [HttpPut("{showId}/Session/{sessionId}")]
-    // public IActionResult UpdateSession(int showId, int sessionId, Session session) {
-    //     if (sessionId != session.SessionId)
-    //         return BadRequest();
+    [HttpPut("{showId}/Session/{sessionId}")]
+    public IActionResult UpdateSession(int showId, int sessionId, Session session) {
+        if (sessionId != session.SessionId)
+            return BadRequest();
             
-    //     var existingSession = _showService.GetSessionById(showId, sessionId);
-    //     if(existingSession is null)
-    //         return NotFound();
+        var existingSession = _sessionService.GetSessionById(showId, sessionId);
+        if(existingSession is null)
+            return NotFound();
     
-    //     _showService.UpdateSession(showId, sessionId, session);           
-    //     return NoContent();
-    // }
+        _sessionService.UpdateSession(showId, sessionId, session);           
+        return NoContent();
+    }
 
 }

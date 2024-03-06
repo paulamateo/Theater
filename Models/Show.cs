@@ -19,6 +19,6 @@ namespace Theater.Models {
         public string? Banner { get; set; }
         public string? Scene { get; set; }
         public string? Overview { get; set; }
-        public List<Session>? Sessions { get; set; }
+        public List<Session> Sessions { get; set; } = new List<Session>();
     }
 }

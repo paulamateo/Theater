@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace Theater.Models {
-    public class ShowDTO {
+    public class ShowUpdateDTO {
         [Key]
         public int ShowId { get; set; }
         public string? Title { get; set; }
