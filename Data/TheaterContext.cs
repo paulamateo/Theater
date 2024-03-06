@@ -33,7 +33,8 @@ namespace Theater.Data {
                 .HasForeignKey(s => s.ShowId);  
             
             modelBuilder.Entity<User>().HasData(
-                new User { UserId = 1, UserName = "Paula", UserLastname = "Mateo", Email = "a26619@svalero.com", Password = "1234", PhoneNumber = "123456789", IsAdmin = true}
+                new User { UserId = 1, UserName = "Paula", UserLastname = "Mateo", Email = "a26619@svalero.com", Password = "1234", PhoneNumber = "123456789", IsAdmin = true},
+                new User { UserId = 2, UserName = "Paula", UserLastname = "Mateo", Email = "paulamateob@gmail.com", Password = "prueba", PhoneNumber = "123456789", IsAdmin = false}
             );
 
             modelBuilder.Entity<Show>().HasData(

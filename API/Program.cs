@@ -4,18 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var isRunningInDocker = Environment.GetEnvironmentVariable("DOCKER_CONTAINER") == "true";
-var keyString = isRunningInDocker ? "ServerDB_Docker" : "ServerDB_Local";
-var connectionString = builder.Configuration.GetConnectionString(keyString);
+var isRunningDocker = Environment.GetEnvironmentVariable("container") == "true";
+var connectionKeyString = isRunningDocker ? "ServerDB_Docker" : "ServerDB_Local";
+var connectionString = builder.Configuration.GetConnectionString(connectionKeyString);
 
 builder.Services.AddDbContext<TheaterContext>(options =>
-    options.UseSqlServer(connectionString, sqlServerOptionsAction: sqlOptions =>
-    {
-        sqlOptions.EnableRetryOnFailure(
-            maxRetryCount: 10,
-            maxRetryDelay: TimeSpan.FromSeconds(30),
-            errorNumbersToAdd: null);
-    }));
+    options.UseSqlServer(connectionString));
 
     builder.Services.AddScoped<IShowRepository, ShowRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
