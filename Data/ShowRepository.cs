@@ -52,28 +52,50 @@ namespace Theater.Data {
             return _context.Shows.Select(s => s.Genre).Distinct().ToList()!;
         }
 
-
         public List<Show> GetShowsByGenre(string genre) {
             return _context.Shows.Where(s => s.Genre == genre).ToList();
         }
 
 
         //SESSIONS
-        public List<Session> GetAllSessionsByShow(int showId) { //{showId}/session
+        public List<Session> GetAllSessions() {
             return _context.Sessions.ToList();
-        } 
-
-        public Session? GetSessionById(int sessionId) { //{showId}/session/1
-            return _context.Sessions.FirstOrDefault(s => s.SessionId == sessionId);
+        }
+        
+        public List<Session> GetSessionsByShowId(int showId) {
+            return _context.Sessions.Where(s => s.ShowId == showId).ToList();
         }
 
-        public void AddSession(Session session) { //{showId}/session
+
+
+
+        public List<Session> GetAllSessionsByShow(int showId) {
+            var show = GetShowById(showId);
+            if (show is null) {
+                throw new KeyNotFoundException("Show not found.");
+            }
+            return _context.Sessions.Where(s => s.ShowId == showId).ToList();
+        }
+
+        public Session? GetSessionById(int showId, int sessionId) { //{showId}/session/1
+            var show = GetShowById(showId);
+            if (show is null) {
+                throw new KeyNotFoundException("Show not found.");
+            }
+            return _context.Sessions.FirstOrDefault(s => s.ShowId == showId && s.SessionId == sessionId);
+        }
+
+        public void AddSession(int showId, Session session) { //{showId}/session
+            var show = GetShowById(showId);
+            if (show is null) {
+                throw new KeyNotFoundException("Show not found.");
+            }
             _context.Sessions.Add(session);
             SaveChanges();
         }
 
-        public void DeleteSession(int sessionId) { //{showId}/session/1
-            var session = GetSessionById(sessionId);
+        public void DeleteSession(int showId, int sessionId) { //{showId}/session/1
+            var session = GetSessionById(showId, sessionId);
             if (session is null) {
                 throw new KeyNotFoundException("Session not found.");
             }
@@ -81,8 +103,13 @@ namespace Theater.Data {
             SaveChanges(); 
         }
 
-        public void UpdateSession(Session session) { //{showId}/session/1
-            _context.Entry(session).State = EntityState.Modified;
+        public void UpdateSession(int showId, int sessionId, Session session) { //{showId}/session/1
+            var show = GetShowById(showId);
+            if (show is null) {
+                throw new KeyNotFoundException("Show not found.");
+            }
+            var existingSession = GetSessionById(showId, sessionId);
+            _context.Entry(existingSession ?? throw new InvalidOperationException("This session is null")).State = EntityState.Modified;
            SaveChanges();
         }
 

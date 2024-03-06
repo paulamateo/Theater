@@ -219,6 +219,11 @@ namespace Theater.Data {
                 }
             );
 
+            modelBuilder.Entity<Session>().HasData(
+                new Session { SessionId = 1, Hour = new TimeSpan(10, 30, 0), Seats = 54, ShowId = 1 },
+                new Session { SessionId = 2, Hour = new TimeSpan(21, 30, 0), Seats = 54, ShowId = 1 }
+            );
+
         }
 
     }
