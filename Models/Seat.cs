@@ -5,5 +5,7 @@ namespace Theater.Models {
         [Key]
         public int SeatId { get; set; }
         public bool IsDisponible { get; set; }
+        public int ShowId { get; set; }
+        public int SessionId { get; set; }
     }
 }

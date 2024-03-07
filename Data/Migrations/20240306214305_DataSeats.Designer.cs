@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Theater.Data;
 
@@ -11,9 +12,10 @@ using Theater.Data;
 namespace Theater.Data.Migrations
 {
     [DbContext(typeof(TheaterContext))]
-    partial class TheaterContextModelSnapshot : ModelSnapshot
+    [Migration("20240306214305_DataSeats")]
+    partial class DataSeats
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,10 +64,7 @@ namespace Theater.Data.Migrations
                     b.Property<int?>("ReservationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SessionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ShowId")
+                    b.Property<int?>("SessionId")
                         .HasColumnType("int");
 
                     b.HasKey("SeatId");
@@ -75,15 +74,6 @@ namespace Theater.Data.Migrations
                     b.HasIndex("SessionId");
 
                     b.ToTable("Seats");
-
-                    b.HasData(
-                        new
-                        {
-                            SeatId = 1,
-                            IsDisponible = false,
-                            SessionId = 1,
-                            ShowId = 1
-                        });
                 });
 
             modelBuilder.Entity("Theater.Models.Session", b =>
@@ -449,9 +439,7 @@ namespace Theater.Data.Migrations
 
                     b.HasOne("Theater.Models.Session", null)
                         .WithMany("Seats")
-                        .HasForeignKey("SessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SessionId");
                 });
 
             modelBuilder.Entity("Theater.Models.Session", b =>

@@ -8,7 +8,6 @@ namespace Theater.Data {
     public class SessionRepository : ISessionRepository {
         private readonly TheaterContext _context;
         private readonly IShowRepository _showRepository;
-        private int nextId;
 
         public SessionRepository(TheaterContext context, IShowRepository showRepository) {
             _context = context;
@@ -19,6 +18,7 @@ namespace Theater.Data {
             _context.SaveChanges();
         }
 
+        //SESSIONS
         public List<Session> GetAllSessions() {
             return _context.Sessions.ToList();
         }
@@ -70,6 +70,35 @@ namespace Theater.Data {
             _context.Entry(existingSession ?? throw new InvalidOperationException("This session is null")).State = EntityState.Modified;
            SaveChanges();
         }
+
+
+        //SEATS
+        // public List<Seat> GetSeatsForSessionAndShow(int sessionId, int showId) {
+        //     var session = GetSessionById(showId, sessionId);
+        //     if (session is null) {
+        //         throw new KeyNotFoundException("Session not found.");
+        //     }
+        //     var seats = _context.Seats.Where(s => s.ShowId == showId && s.SessionId == sessionId).ToList();
+        //     return seats;
+        // }
+
+        // public Seat? GetSeat(int sessionId, int showId, int seatId) {
+        //     var session = GetSessionById(showId, sessionId);
+        //     if (session is null) {
+        //         throw new KeyNotFoundException("Session not found.");
+        //     }
+        //     return _context.Seats.FirstOrDefault(s => s.SeatId == seatId && s.SessionId == sessionId && s.ShowId == showId);
+
+        // }
+
+        // public void AddSeat(int sessionId, int showId, Seat seat) {
+        //     var session = GetSessionById(showId, sessionId);
+        //     if (session is null) {
+        //         throw new KeyNotFoundException("Session not found.");
+        //     }
+        //     _context.Seats.Add(seat);
+        //     SaveChanges();
+        // }
 
     }
 }

@@ -6,10 +6,9 @@ namespace Theater.Models {
         public int SessionId { get; set; }
         public TimeSpan Hour { get; set; } 
         [Required]
-        public int Seats { get; set; }
-        public List<Seat>? ReservedSeating { get; set; }
+        public int TotalSeats { get; set; }
+        public List<Seat>? Seats { get; set; }
         [Required]
         public int ShowId { get; set; }
-        public List<Reservation>? Reservations { get; set; }
     }
 }

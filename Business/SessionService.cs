@@ -20,5 +20,10 @@ namespace Theater.Business {
 
         public List<Session> GetAllSessions() => _sessionRepository.GetAllSessions();
         public List<Session> GetSessionsByShowId(int showId) => _sessionRepository.GetSessionsByShowId(showId);
+
+        //SEATS
+        // public List<Seat> GetSeatsForSessionAndShow(int sessionId, int showId) => _sessionRepository.GetSeatsForSessionAndShow(sessionId, showId);
+        // public void AddSeat(int sessionId, int showId, Seat seat) => _sessionRepository.AddSeat(sessionId, showId, seat);
+        // public Seat? GetSeat(int sessionId, int showId, int seatId) => _sessionRepository.GetSeat(sessionId, showId, seatId);
     }
 }

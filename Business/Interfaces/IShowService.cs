@@ -5,7 +5,7 @@ namespace Theater.Business {
         //SHOWS
         List<Show> GetAllShows();
         Show? GetShowById(int showId);
-        void AddShow(Show show);
+        void AddShow(ShowDTO show);
         void DeleteShow(int showId);
         void UpdateShow(Show show);
 

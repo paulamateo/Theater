@@ -18,6 +18,10 @@ namespace Theater.Data {
         }
 
         //SHOWS
+        // public List<Show> GetAllShows() {
+        //     return _context.Shows.ToList();
+        // }
+
         public List<Show> GetAllShows() {
             return _context.Shows.Include(s => s.Sessions).ToList();
         }
@@ -26,11 +30,26 @@ namespace Theater.Data {
             return _context.Shows.FirstOrDefault(s => s.ShowId == showId);
         }
 
-        public void AddShow(Show show) {
-            show.ShowId = nextId++;
-            _context.Shows.Add(show);
+        public void AddShow(ShowDTO show) {
+            var newShow = new Show {
+                Title = show.Title,
+                Author = show.Author,
+                Director = show.Director,
+                Genre = show.Genre,
+                Age = show.Age,
+                Date = show.Date,
+                Length = show.Length,
+                Price = show.Price,
+                Poster = show.Poster,
+                Banner = show.Banner,
+                Scene = show.Scene,
+                Overview = show.Overview
+            };
+            _context.Shows.Add(newShow);
             SaveChanges();
         }
+
+    
 
         public void DeleteShow(int showId) {
             var show = GetShowById(showId);
@@ -46,6 +65,9 @@ namespace Theater.Data {
            SaveChanges();
         }
 
+
+
+  
 
         //GENRES
         public List<string> GetAllGenres() {

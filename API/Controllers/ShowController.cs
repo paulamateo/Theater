@@ -30,8 +30,40 @@ public class ShowController : ControllerBase {
         return show;
     }
 
+    //SEATS
+    // [HttpGet("{showId}/Session/{sessionId}/Seat")]
+    // public ActionResult<List<Seat>> GetAllSeats(int showId, int sessionId) {
+    //     var seats = _sessionService.GetSeatsForSessionAndShow(showId, sessionId);
+    //     return seats;
+    // }
+
+    // [HttpGet("{showId}/Session/{sessionId}/Seat/{seatId}")]
+    // public ActionResult<Seat> GetSeat(int showId, int sessionId, int seatId) {
+    //     var seat = _sessionService.GetSeat(sessionId, showId, seatId);
+
+    //     if (seat == null) {
+    //         return NotFound();
+    //     }
+    //     return seat;
+    // }
+
+    // [HttpPost("{showId}/Session/{sessionId}/Seat")]
+    // public ActionResult CreateSeat(int sessionId, int showId, Seat seat) {
+    //     _sessionService.AddSeat(sessionId, showId, seat);
+    //     return CreatedAtAction(nameof(GetSeat), new { seatId = seat.SeatId }, seat);
+    // }
+
+
+
+
+
+
+
+
+
+
     [HttpPost()]
-    public IActionResult Create(Show show) {            
+    public IActionResult Create(ShowDTO show) {            
         _showService.AddShow(show);
         return CreatedAtAction(nameof(Get), new { showId = show.ShowId }, show);
     }
