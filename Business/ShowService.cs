@@ -15,7 +15,7 @@ namespace Theater.Business {
         public Show? GetShowById(int showId) => _showRepository.GetShowById(showId);
         public void AddShow(ShowDTO show) => _showRepository.AddShow(show);
         public void DeleteShow(int showId) => _showRepository.DeleteShow(showId);
-        public void UpdateShow(Show show) => _showRepository.UpdateShow(show);
+        public void UpdateShow(ShowDTO show) => _showRepository.UpdateShow(show);
 
         //GENRES
         public List<string> GetAllGenres() => _showRepository.GetAllGenres();

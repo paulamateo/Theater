@@ -7,7 +7,6 @@ namespace Theater.Data {
     
     public class ShowRepository : IShowRepository {
         private readonly TheaterContext _context;
-        private int nextId;
 
         public ShowRepository(TheaterContext context) {
             _context = context;
@@ -18,10 +17,6 @@ namespace Theater.Data {
         }
 
         //SHOWS
-        // public List<Show> GetAllShows() {
-        //     return _context.Shows.ToList();
-        // }
-
         public List<Show> GetAllShows() {
             return _context.Shows.Include(s => s.Sessions).ToList();
         }
@@ -49,8 +44,6 @@ namespace Theater.Data {
             SaveChanges();
         }
 
-    
-
         public void DeleteShow(int showId) {
             var show = GetShowById(showId);
             if (show is null) {
@@ -60,14 +53,57 @@ namespace Theater.Data {
             SaveChanges(); 
         }
 
-        public void UpdateShow(Show show) {
-            _context.Entry(show).State = EntityState.Modified;
-           SaveChanges();
+        // public void UpdateShow(ShowDTO show) {
+        //     var updatedShow = new Show {
+        //         ShowId = show.ShowId,
+        //         Title = show.Title,
+        //         Author = show.Author,
+        //         Director = show.Director,
+        //         Genre = show.Genre,
+        //         Age = show.Age,
+        //         Date = show.Date,
+        //         Length = show.Length,
+        //         Price = show.Price,
+        //         Poster = show.Poster,
+        //         Banner = show.Banner,
+        //         Scene = show.Scene,
+        //         Overview = show.Overview
+        //     };
+        //     _context.Entry(updatedShow).State = EntityState.Modified;
+        //    SaveChanges();
+        // }
+
+        public void UpdateShow (ShowDTO show) {
+            var updatedShow = new Show {
+                ShowId = show.ShowId,
+                Title = show.Title,
+                Author = show.Author,
+                Director = show.Director,
+                Genre = show.Genre,
+                Age = show.Age,
+                Date = show.Date,
+                Length = show.Length,
+                Price = show.Price,
+                Poster = show.Poster,
+                Banner = show.Banner,
+                Scene = show.Scene,
+                Overview = show.Overview
+            };
+         
+            _context.Entry(updatedShow).CurrentValues.SetValues(show);
+        SaveChanges();
         }
 
+        // public void UpdateShow (ShowDTO show) {
+        //     _context.Entry(show).State = EntityState.Modified;
+        //    SaveChanges();
+        // }
 
 
-  
+
+
+
+     // _context.Entry(updatedShow).CurrentValues.SetValues(show);
 
         //GENRES
         public List<string> GetAllGenres() {

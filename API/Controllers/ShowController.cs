@@ -55,13 +55,6 @@ public class ShowController : ControllerBase {
 
 
 
-
-
-
-
-
-
-
     [HttpPost()]
     public IActionResult Create(ShowDTO show) {            
         _showService.AddShow(show);
@@ -69,7 +62,7 @@ public class ShowController : ControllerBase {
     }
 
     [HttpPut("{showId}")]
-    public IActionResult Update(int showId, Show show) {
+    public IActionResult Update(int showId, ShowDTO show) {
         if (showId != show.ShowId)
             return BadRequest();
             
@@ -78,7 +71,7 @@ public class ShowController : ControllerBase {
             return NotFound();
     
         _showService.UpdateShow(show);           
-        return NoContent();
+        return Ok();
     }
 
     [HttpDelete("{showId}")]
