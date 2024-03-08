@@ -53,57 +53,26 @@ namespace Theater.Data {
             SaveChanges(); 
         }
 
-        // public void UpdateShow(ShowDTO show) {
-        //     var updatedShow = new Show {
-        //         ShowId = show.ShowId,
-        //         Title = show.Title,
-        //         Author = show.Author,
-        //         Director = show.Director,
-        //         Genre = show.Genre,
-        //         Age = show.Age,
-        //         Date = show.Date,
-        //         Length = show.Length,
-        //         Price = show.Price,
-        //         Poster = show.Poster,
-        //         Banner = show.Banner,
-        //         Scene = show.Scene,
-        //         Overview = show.Overview
-        //     };
-        //     _context.Entry(updatedShow).State = EntityState.Modified;
-        //    SaveChanges();
-        // }
+        public void UpdateShow(ShowDTO show) {
+            var showToBeUpdated = _context.Shows.FirstOrDefault(s => s.ShowId == show.ShowId);
 
-        public void UpdateShow (ShowDTO show) {
-            var updatedShow = new Show {
-                ShowId = show.ShowId,
-                Title = show.Title,
-                Author = show.Author,
-                Director = show.Director,
-                Genre = show.Genre,
-                Age = show.Age,
-                Date = show.Date,
-                Length = show.Length,
-                Price = show.Price,
-                Poster = show.Poster,
-                Banner = show.Banner,
-                Scene = show.Scene,
-                Overview = show.Overview
-            };
-         
-            _context.Entry(updatedShow).CurrentValues.SetValues(show);
-        SaveChanges();
+            if (showToBeUpdated != null) {
+                showToBeUpdated.Title = show.Title;
+                showToBeUpdated.Author = show.Author;
+                showToBeUpdated.Director = show.Director;
+                showToBeUpdated.Genre = show.Genre;
+                showToBeUpdated.Age = show.Age;
+                showToBeUpdated.Date = show.Date;
+                showToBeUpdated.Length = show.Length;
+                showToBeUpdated.Price = show.Price;
+                showToBeUpdated.Poster = show.Poster;
+                showToBeUpdated.Banner = show.Banner;
+                showToBeUpdated.Scene = show.Scene;
+                showToBeUpdated.Overview = show.Overview;
+                _context.SaveChanges();
+            }
         }
 
-        // public void UpdateShow (ShowDTO show) {
-        //     _context.Entry(show).State = EntityState.Modified;
-        //    SaveChanges();
-        // }
-
-
-
-
-
-     // _context.Entry(updatedShow).CurrentValues.SetValues(show);
 
         //GENRES
         public List<string> GetAllGenres() {

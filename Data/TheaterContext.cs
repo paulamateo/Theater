@@ -14,19 +14,8 @@ namespace Theater.Data {
         public DbSet<User> Users { get; set; }
         public DbSet<Seat> Seats { get; set; }
         public DbSet<Session> Sessions { get; set; }
-        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) { 
-            modelBuilder.Entity<Reservation>()
-                .HasOne(r => r.User)
-                .WithMany(u => u.Reservations)
-                .HasForeignKey(r => r.UserId);
-
-            // modelBuilder.Entity<Session>()
-            //     .HasMany(s => s.Reservations)
-            //     .WithOne(r => r.Session)
-            //     .HasForeignKey(r => r.SessionId);
-            
             modelBuilder.Entity<User>().HasData(
                 new User { UserId = 1, UserName = "Paula", UserLastname = "Mateo", Email = "a26619@svalero.com", Password = "1234", PhoneNumber = "123456789", IsAdmin = true},
                 new User { UserId = 2, UserName = "Paula", UserLastname = "Mateo", Email = "paulamateob@gmail.com", Password = "prueba", PhoneNumber = "123456789", IsAdmin = false}

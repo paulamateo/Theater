@@ -22,32 +22,6 @@ namespace Theater.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Theater.Models.Reservation", b =>
-                {
-                    b.Property<int>("ReservationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReservationId"), 1L, 1);
-
-                    b.Property<int>("SessionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalPrice")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ReservationId");
-
-                    b.HasIndex("SessionId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Reservations");
-                });
-
             modelBuilder.Entity("Theater.Models.Seat", b =>
                 {
                     b.Property<int>("SeatId")
@@ -59,9 +33,6 @@ namespace Theater.Data.Migrations
                     b.Property<bool>("IsDisponible")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ReservationId")
-                        .HasColumnType("int");
-
                     b.Property<int>("SessionId")
                         .HasColumnType("int");
 
@@ -69,8 +40,6 @@ namespace Theater.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("SeatId");
-
-                    b.HasIndex("ReservationId");
 
                     b.HasIndex("SessionId");
 
@@ -422,31 +391,8 @@ namespace Theater.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Theater.Models.Reservation", b =>
-                {
-                    b.HasOne("Theater.Models.Session", "Session")
-                        .WithMany()
-                        .HasForeignKey("SessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Theater.Models.User", "User")
-                        .WithMany("Reservations")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Session");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Theater.Models.Seat", b =>
                 {
-                    b.HasOne("Theater.Models.Reservation", null)
-                        .WithMany("SeatsReserved")
-                        .HasForeignKey("ReservationId");
-
                     b.HasOne("Theater.Models.Session", null)
                         .WithMany("Seats")
                         .HasForeignKey("SessionId")
@@ -463,11 +409,6 @@ namespace Theater.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Theater.Models.Reservation", b =>
-                {
-                    b.Navigation("SeatsReserved");
-                });
-
             modelBuilder.Entity("Theater.Models.Session", b =>
                 {
                     b.Navigation("Seats");
@@ -476,11 +417,6 @@ namespace Theater.Data.Migrations
             modelBuilder.Entity("Theater.Models.Show", b =>
                 {
                     b.Navigation("Sessions");
-                });
-
-            modelBuilder.Entity("Theater.Models.User", b =>
-                {
-                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

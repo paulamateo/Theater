@@ -3,11 +3,11 @@
 
      dotnet ef migrations add Migrations -p Data/ -s API/
 
-Otras migraciones:
-
      dotnet ef migrations add InitialCreate -p ./Data/Theater.Data.csproj -s ./API/Theater.API.csproj
 
      dotnet ef database update  -p ./Data/Theater.Data.csproj -s ./API/Theater.API.csproj
+
+     dotnet ef database drop  -p ./Data/Theater.Data.csproj -s ./API/Theater.API.csproj
 
 ### Docker
 
