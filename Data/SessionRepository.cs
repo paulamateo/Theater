@@ -22,54 +22,79 @@ namespace Theater.Data {
         public List<Session> GetAllSessions() {
             return _context.Sessions.ToList();
         }
+
+        public Session? GetSessionById(int sessionId) {
+            return _context.Sessions.FirstOrDefault(s => s.SessionId == sessionId);
+        }
         
-        public List<Session> GetSessionsByShowId(int showId) {
-            return _context.Sessions.Where(s => s.ShowId == showId).ToList();
-        }
-
-        public List<Session> GetAllSessionsByShow(int showId) {
-            var show = _showRepository.GetShowById(showId);
+        public void AddSession(SessionCreateDTO session) {
+            var show = _context.Shows.FirstOrDefault(s => s.ShowId == session.ShowId);
             if (show is null) {
                 throw new KeyNotFoundException("Show not found.");
             }
-            return _context.Sessions.Where(s => s.ShowId == showId).ToList();
-        }
 
-        public Session? GetSessionById(int showId, int sessionId) {
-            var show = _showRepository.GetShowById(showId);
-            if (show is null) {
-                throw new KeyNotFoundException("Show not found.");
-            }
-            return _context.Sessions.FirstOrDefault(s => s.ShowId == showId && s.SessionId == sessionId);
-        }
+            DateTime sessionDateTime = new DateTime(show.Date.Year, show.Date.Month, show.Date.Day, session.Hour.Hour, session.Hour.Minute, session.Hour.Second);
+            
+            var newSession = new Session {
+                Hour = sessionDateTime,
+                TotalSeats = session.TotalSeats,
+                Notes = session.Notes,
+                ShowId = session.ShowId,
+                Title = show.Title,
+                Poster = show.Poster
+            };
 
-        public void AddSession(int showId, Session session) {
-            var show = _showRepository.GetShowById(showId);
-            if (show is null) {
-                throw new KeyNotFoundException("Show not found.");
-            }
-            _context.Sessions.Add(session);
+            _context.Sessions.Add(newSession);
             SaveChanges();
         }
 
-        public void DeleteSession(int showId, int sessionId) {
-            var session = GetSessionById(showId, sessionId);
-            if (session is null) {
-                throw new KeyNotFoundException("Session not found.");
-            }
-            _context.Sessions.Remove(session);
-            SaveChanges(); 
-        }
+        // public List<Session> GetSessionsByShowId(int showId) {
+        //     return _context.Sessions.Where(s => s.ShowId == showId).ToList();
+        // }
 
-        public void UpdateSession(int showId, int sessionId, Session session) {
-            var show = _showRepository.GetShowById(showId);
-            if (show is null) {
-                throw new KeyNotFoundException("Show not found.");
-            }
-            var existingSession = GetSessionById(showId, sessionId);
-            _context.Entry(existingSession ?? throw new InvalidOperationException("This session is null")).State = EntityState.Modified;
-           SaveChanges();
-        }
+        // public List<Session> GetAllSessionsByShow(int showId) {
+        //     var show = _showRepository.GetShowById(showId);
+        //     if (show is null) {
+        //         throw new KeyNotFoundException("Show not found.");
+        //     }
+        //     return _context.Sessions.Where(s => s.ShowId == showId).ToList();
+        // }
+
+        // public Session? GetSessionById(int showId, int sessionId) {
+        //     var show = _showRepository.GetShowById(showId);
+        //     if (show is null) {
+        //         throw new KeyNotFoundException("Show not found.");
+        //     }
+        //     return _context.Sessions.FirstOrDefault(s => s.ShowId == showId && s.SessionId == sessionId);
+        // }
+
+        // public void AddSession(int showId, Session session) {
+        //     var show = _showRepository.GetShowById(showId);
+        //     if (show is null) {
+        //         throw new KeyNotFoundException("Show not found.");
+        //     }
+        //     _context.Sessions.Add(session);
+        //     SaveChanges();
+        // }
+
+        // public void DeleteSession(int showId, int sessionId) {
+        //     var session = GetSessionById(showId, sessionId);
+        //     if (session is null) {
+        //         throw new KeyNotFoundException("Session not found.");
+        //     }
+        //     _context.Sessions.Remove(session);
+        //     SaveChanges(); 
+        // }
+
+        // public void UpdateSession(int showId, int sessionId, Session session) {
+        //     var show = _showRepository.GetShowById(showId);
+        //     if (show is null) {
+        //         throw new KeyNotFoundException("Show not found.");
+        //     }
+        //     var existingSession = GetSessionById(showId, sessionId);
+        //     _context.Entry(existingSession ?? throw new InvalidOperationException("This session is null")).State = EntityState.Modified;
+        //    SaveChanges();
+        // }
 
 
         //SEATS
