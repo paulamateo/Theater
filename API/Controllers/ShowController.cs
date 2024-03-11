@@ -15,10 +15,8 @@ public class ShowController : ControllerBase {
         _sessionService = sessionService;
     }
 
-    //SHOWS
     [HttpGet()]
-    public ActionResult<List<Show>> GetAll() =>
-        _showService.GetAllShows();
+    public ActionResult<List<Show>> GetAll() =>  _showService.GetAllShows();
 
     [HttpGet("{showId}")]
     public ActionResult<Show> Get(int showId) {
@@ -30,48 +28,70 @@ public class ShowController : ControllerBase {
         return show;
     }
 
-    //SEATS
-    // [HttpGet("{showId}/Session/{sessionId}/Seat")]
-    // public ActionResult<List<Seat>> GetAllSeats(int showId, int sessionId) {
-    //     var seats = _sessionService.GetSeatsForSessionAndShow(showId, sessionId);
-    //     return seats;
-    // }
+    [HttpGet("ByName/{title}")]
+    public ActionResult<Show> GetByTitle(string title) {
+        var show = _showService.GetShowByTitle(title);
 
-    // [HttpGet("{showId}/Session/{sessionId}/Seat/{seatId}")]
-    // public ActionResult<Seat> GetSeat(int showId, int sessionId, int seatId) {
-    //     var seat = _sessionService.GetSeat(sessionId, showId, seatId);
+        if(show == null)
+            return NotFound();
 
-    //     if (seat == null) {
-    //         return NotFound();
-    //     }
-    //     return seat;
-    // }
+        return show;
+    }
 
-    // [HttpPost("{showId}/Session/{sessionId}/Seat")]
-    // public ActionResult CreateSeat(int sessionId, int showId, Seat seat) {
-    //     _sessionService.AddSeat(sessionId, showId, seat);
-    //     return CreatedAtAction(nameof(GetSeat), new { seatId = seat.SeatId }, seat);
-    // }
+    [HttpGet("{showId}/Session")]
+    public ActionResult<List<Session>> GetSessionsByShow(int showId) {
+        var sessions = _showService.GetSessionsByShow(showId);
 
+        if (sessions == null) 
+            return NotFound();
 
+        return sessions;
+    }
 
     [HttpPost()]
-    public IActionResult Create(ShowDTO show) {            
-        _showService.AddShow(show);
+    public IActionResult Create([FromBody] ShowDTO show) {   
+        var newShow = new Show {
+            Title = show.Title,
+            Author = show.Author,
+            Director = show.Director,
+            Genre = show.Genre,
+            Age = show.Age,
+            Date = show.Date,
+            Length = show.Length,
+            Price = show.Price,
+            Poster = show.Poster,
+            Banner = show.Banner,
+            Scene = show.Scene,
+            Overview = show.Overview
+        };         
+        _showService.AddShow(newShow);
         return CreatedAtAction(nameof(Get), new { showId = show.ShowId }, show);
     }
 
     [HttpPut("{showId}")]
-    public IActionResult Update(int showId, ShowDTO show) {
+    public IActionResult Update(int showId, [FromBody] ShowDTO show) {
         if (showId != show.ShowId)
             return BadRequest();
             
         var existingShow = _showService.GetShowById(showId);
         if(existingShow is null)
             return NotFound();
-    
-        _showService.UpdateShow(show);           
-        return Ok();
+
+        existingShow.Title = show.Title;
+        existingShow.Author = show.Author;
+        existingShow.Director = show.Director;
+        existingShow.Genre = show.Genre;
+        existingShow.Age = show.Age;
+        existingShow.Date = show.Date;
+        existingShow.Length = show.Length;
+        existingShow.Price = show.Price;
+        existingShow.Poster = show.Poster;
+        existingShow.Banner = show.Banner;
+        existingShow.Scene = show.Scene;
+        existingShow.Overview = show.Overview;
+
+        _showService.UpdateShow(existingShow);           
+        return NoContent();
     }
 
     [HttpDelete("{showId}")]
@@ -85,52 +105,5 @@ public class ShowController : ControllerBase {
     
         return NoContent();
     }
-
-
-    //SESSIONS
-    // [HttpGet("{showId}/Session")]
-    // public ActionResult<List<Session>> GetSessionsByShowId(int showId) =>
-    //     _sessionService.GetSessionsByShowId(showId);
-
-    // [HttpGet("{showId}/Session/{sessionId}")]
-    // public ActionResult<Session> GetSession(int showId, int sessionId) {
-    //     var session = _sessionService.GetSessionById(showId, sessionId);
-
-    //     if(session == null)
-    //         return NotFound();
-
-    //     return session;
-    // }
-
-    // [HttpPost("{showId}/Session")]
-    // public IActionResult CreateSession(int showId, Session session) {            
-    //     _sessionService.AddSession(showId, session);
-    //     return CreatedAtAction(nameof(GetSession), new { sessionId = session.SessionId }, session);
-    // }
-
-    // [HttpDelete("{showId}/Session/{sessionId}")]
-    // public IActionResult DeleteSession(int showId, int sessionId) {
-    //     var show = _showService.GetShowById(showId);
-    
-    //     if (show is null)
-    //         return NotFound();
-        
-    //     _sessionService.DeleteSession(showId, sessionId);
-    
-    //     return NoContent();
-    // }
-
-    // [HttpPut("{showId}/Session/{sessionId}")]
-    // public IActionResult UpdateSession(int showId, int sessionId, Session session) {
-    //     if (sessionId != session.SessionId)
-    //         return BadRequest();
-            
-    //     var existingSession = _sessionService.GetSessionById(showId, sessionId);
-    //     if(existingSession is null)
-    //         return NotFound();
-    
-    //     _sessionService.UpdateSession(showId, sessionId, session);           
-    //     return NoContent();
-    // }
 
 }

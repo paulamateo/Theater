@@ -4,21 +4,16 @@ namespace Theater.Data {
 
     public interface ISessionRepository {
         //SESSIONS
-        // List<Session> GetAllSessionsByShow(int showId);
-        // Session? GetSessionById(int showId, int sessionId);
-        // void AddSession(int showId, Session session);
-        // void DeleteSession(int showId, int sessionId);
-        // void UpdateSession(int showId, int sessionId, Session session);
-        // List<Session> GetAllSessions();
-        // List<Session> GetSessionsByShowId(int showId);
+        List<Session> GetAllSessions();
+        Session? GetSessionById(int sessionId);
+        void AddSession(Session session);
+        void DeleteSession(int sessionId);
+        void UpdateSession(Session session);
 
         //SEATS
-        // List<Seat> GetSeatsForSessionAndShow(int sessionId, int showId);
-        // void AddSeat(int sessionId, int showId, Seat seat);
-        // Seat? GetSeat(int sessionId, int showId, int seatId);
-        List<Session> GetAllSessions();
-        void AddSession(SessionCreateDTO session);
-        Session? GetSessionById(int sessionId);
+        List<Seat> GetSeatsBySession(int sessionId);
+        Seat? GetSeatById(int sessionId, int seatId);
+        void AddSeat(int sessionId, Seat seat);
     }
 
 }

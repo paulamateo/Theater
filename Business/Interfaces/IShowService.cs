@@ -2,15 +2,14 @@ using Theater.Models;
 
 namespace Theater.Business { 
     public interface IShowService {
-        //SHOWS
         List<Show> GetAllShows();
         Show? GetShowById(int showId);
-        void AddShow(ShowDTO show);
+        Show? GetShowByTitle(string title);
+        void AddShow(Show show);
         void DeleteShow(int showId);
-        void UpdateShow(ShowDTO show);
-
-        //GENRES
+        void UpdateShow(Show show);
         List<string> GetAllGenres();
         List<Show> GetShowsByGenre(string genre);
+        List<Session> GetSessionsByShow(int showId);
     }
 }

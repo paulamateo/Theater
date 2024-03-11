@@ -16,7 +16,6 @@ namespace Theater.Data {
             _context.SaveChanges();
         }
 
-        //SHOWS
         public List<Show> GetAllShows() {
             return _context.Shows.Include(s => s.Sessions).ToList();
         }
@@ -25,22 +24,12 @@ namespace Theater.Data {
             return _context.Shows.FirstOrDefault(s => s.ShowId == showId);
         }
 
-        public void AddShow(ShowDTO show) {
-            var newShow = new Show {
-                Title = show.Title,
-                Author = show.Author,
-                Director = show.Director,
-                Genre = show.Genre,
-                Age = show.Age,
-                Date = show.Date,
-                Length = show.Length,
-                Price = show.Price,
-                Poster = show.Poster,
-                Banner = show.Banner,
-                Scene = show.Scene,
-                Overview = show.Overview
-            };
-            _context.Shows.Add(newShow);
+        public Show? GetShowByTitle(string title) {
+            return _context.Shows.FirstOrDefault(s => s.Title == title);
+        }
+
+        public void AddShow(Show show) {
+            _context.Shows.Add(show);
             SaveChanges();
         }
 
@@ -53,24 +42,13 @@ namespace Theater.Data {
             SaveChanges(); 
         }
 
-        public void UpdateShow(ShowDTO show) {
-            var showToBeUpdated = _context.Shows.FirstOrDefault(s => s.ShowId == show.ShowId);
+        public void UpdateShow(Show show) {
+            _context.Entry(show).State = EntityState.Modified;
+            SaveChanges();
+        }
 
-            if (showToBeUpdated != null) {
-                showToBeUpdated.Title = show.Title;
-                showToBeUpdated.Author = show.Author;
-                showToBeUpdated.Director = show.Director;
-                showToBeUpdated.Genre = show.Genre;
-                showToBeUpdated.Age = show.Age;
-                showToBeUpdated.Date = show.Date;
-                showToBeUpdated.Length = show.Length;
-                showToBeUpdated.Price = show.Price;
-                showToBeUpdated.Poster = show.Poster;
-                showToBeUpdated.Banner = show.Banner;
-                showToBeUpdated.Scene = show.Scene;
-                showToBeUpdated.Overview = show.Overview;
-                _context.SaveChanges();
-            }
+        public List<Session> GetSessionsByShow(int showId) {
+            return _context.Sessions.Where(s => s.ShowId == showId).ToList();
         }
 
 

@@ -12,8 +12,8 @@ using Theater.Data;
 namespace Theater.Data.Migrations
 {
     [DbContext(typeof(TheaterContext))]
-    [Migration("20240308193520_SessionsData3")]
-    partial class SessionsData3
+    [Migration("20240310133904_Migrations")]
+    partial class Migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,9 +38,6 @@ namespace Theater.Data.Migrations
                     b.Property<int>("SessionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ShowId")
-                        .HasColumnType("int");
-
                     b.HasKey("SeatId");
 
                     b.HasIndex("SessionId");
@@ -56,8 +53,11 @@ namespace Theater.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SessionId"), 1L, 1);
 
-                    b.Property<DateTime>("Hour")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Hour")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
@@ -79,6 +79,272 @@ namespace Theater.Data.Migrations
                     b.HasIndex("ShowId");
 
                     b.ToTable("Sessions");
+
+                    b.HasData(
+                        new
+                        {
+                            SessionId = 1,
+                            Date = new DateTime(2024, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "10:30",
+                            Notes = "Mañana",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/07ae39b53a3acdc8968c013078a84841/p_thephantomoftheopera.jpeg",
+                            ShowId = 1,
+                            Title = "El Fantasma de la Ópera",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 2,
+                            Date = new DateTime(2024, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "17:00",
+                            Notes = "Tarde",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/07ae39b53a3acdc8968c013078a84841/p_thephantomoftheopera.jpeg",
+                            ShowId = 1,
+                            Title = "El Fantasma de la Ópera",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 3,
+                            Date = new DateTime(2024, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "09:00",
+                            Notes = "Mañana",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/ea5ad6e8925b91ef21b62088f648314a/p_macbeth.jpeg",
+                            ShowId = 2,
+                            Title = "Macbeth",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 4,
+                            Date = new DateTime(2024, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "18:00",
+                            Notes = "Tarde",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/ea5ad6e8925b91ef21b62088f648314a/p_macbeth.jpeg",
+                            ShowId = 2,
+                            Title = "Macbeth",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 5,
+                            Date = new DateTime(2024, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "11:00",
+                            Notes = "Mañana",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/9fbd3ea41e55810ca3336f994d0a48c6/p_hamlet.jpeg",
+                            ShowId = 3,
+                            Title = "Hamlet",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 6,
+                            Date = new DateTime(2024, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "19:00",
+                            Notes = "Tarde",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/9fbd3ea41e55810ca3336f994d0a48c6/p_hamlet.jpeg",
+                            ShowId = 3,
+                            Title = "Hamlet",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 7,
+                            Date = new DateTime(2024, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "10:30",
+                            Notes = "Mañana",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/00c2e3e17214c2efa70d280d78233cd4/p_thenutcracker.jpeg",
+                            ShowId = 4,
+                            Title = "El Cascanueces",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 8,
+                            Date = new DateTime(2024, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "17:00",
+                            Notes = "Tarde",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/00c2e3e17214c2efa70d280d78233cd4/p_thenutcracker.jpeg",
+                            ShowId = 4,
+                            Title = "El Cascanueces",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 9,
+                            Date = new DateTime(2024, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "09:00",
+                            Notes = "Mañana",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/1676a101744ff32be3d11e5fb3b8615b/p_thedivinecomedy.jpeg",
+                            ShowId = 5,
+                            Title = "Divina Comedia",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 10,
+                            Date = new DateTime(2024, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "18:00",
+                            Notes = "Tarde",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/1676a101744ff32be3d11e5fb3b8615b/p_thedivinecomedy.jpeg",
+                            ShowId = 5,
+                            Title = "Divina Comedia",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 11,
+                            Date = new DateTime(2024, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "11:00",
+                            Notes = "Mañana",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/5db151c70121f5c2f80eb198ebdbba0d/p_oedipustheking.jpeg",
+                            ShowId = 6,
+                            Title = "Edipo Rey",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 12,
+                            Date = new DateTime(2024, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "19:00",
+                            Notes = "Tarde",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/5db151c70121f5c2f80eb198ebdbba0d/p_oedipustheking.jpeg",
+                            ShowId = 6,
+                            Title = "Edipo Rey",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 13,
+                            Date = new DateTime(2024, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "10:30",
+                            Notes = "Mañana",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/acb9c14cc16797b00208ce227ee172f3/p_romeoandjuliet.jpeg",
+                            ShowId = 7,
+                            Title = "Romeo y Julieta",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 14,
+                            Date = new DateTime(2024, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "17:00",
+                            Notes = "Tarde",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/acb9c14cc16797b00208ce227ee172f3/p_romeoandjuliet.jpeg",
+                            ShowId = 7,
+                            Title = "Romeo y Julieta",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 15,
+                            Date = new DateTime(2024, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "09:00",
+                            Notes = "Mañana",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/a46e3f593a2193f455774a22b1f54ce3/p_camelot.jpeg",
+                            ShowId = 8,
+                            Title = "Camelot",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 16,
+                            Date = new DateTime(2024, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "18:00",
+                            Notes = "Tarde",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/a46e3f593a2193f455774a22b1f54ce3/p_camelot.jpeg",
+                            ShowId = 8,
+                            Title = "Camelot",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 17,
+                            Date = new DateTime(2024, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "11:00",
+                            Notes = "Mañana",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/1e9abaa74edce8f90bb2261d89f4f96a/p_ladies.jpeg",
+                            ShowId = 9,
+                            Title = "Las Preciosas Ridículas",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 18,
+                            Date = new DateTime(2024, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "20:00",
+                            Notes = "Tarde",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/1e9abaa74edce8f90bb2261d89f4f96a/p_ladies.jpeg",
+                            ShowId = 9,
+                            Title = "Las Preciosas Ridículas",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 19,
+                            Date = new DateTime(2024, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "10:30",
+                            Notes = "Mañana",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/406d4bad91ab911da6d7728f0f88d24f/p_lacelestina.jpeg",
+                            ShowId = 10,
+                            Title = "La Celestina",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 20,
+                            Date = new DateTime(2024, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "21:00",
+                            Notes = "Tarde",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/406d4bad91ab911da6d7728f0f88d24f/p_lacelestina.jpeg",
+                            ShowId = 10,
+                            Title = "La Celestina",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 21,
+                            Date = new DateTime(2024, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "09:00",
+                            Notes = "Mañana",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/dab8afc2e4fcd8df3b04255035f8db66/p_anidealhusband.jpeg",
+                            ShowId = 11,
+                            Title = "Un Marido Ideal",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 22,
+                            Date = new DateTime(2024, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "17:00",
+                            Notes = "Tarde",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/dab8afc2e4fcd8df3b04255035f8db66/p_anidealhusband.jpeg",
+                            ShowId = 11,
+                            Title = "Un Marido Ideal",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 23,
+                            Date = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "11:00",
+                            Notes = "Mañana",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/fc3a921c4ea328191548e9bb390304be/p_themousetrap.jpeg",
+                            ShowId = 12,
+                            Title = "La Ratonera",
+                            TotalSeats = 60
+                        },
+                        new
+                        {
+                            SessionId = 24,
+                            Date = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Hour = "20:00",
+                            Notes = "Tarde",
+                            Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/fc3a921c4ea328191548e9bb390304be/p_themousetrap.jpeg",
+                            ShowId = 12,
+                            Title = "La Ratonera",
+                            TotalSeats = 60
+                        });
                 });
 
             modelBuilder.Entity("Theater.Models.Show", b =>
@@ -136,7 +402,7 @@ namespace Theater.Data.Migrations
                             Age = 18,
                             Author = "Gaston Leroux",
                             Banner = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/9d9e9eae70cef77f81c68fd38937b695/b_phantom.png",
-                            Date = new DateTime(2024, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Director = "Sara García",
                             Genre = "Musical",
                             Length = "2h 30min",
@@ -152,7 +418,7 @@ namespace Theater.Data.Migrations
                             Age = 16,
                             Author = "William Shakespeare",
                             Banner = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/5d4beb1235f03f615bcdb237230fac91/b_macbeth.png",
-                            Date = new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Director = "Carlos Montoya",
                             Genre = "Tragedia",
                             Length = "2h 40min",
@@ -168,7 +434,7 @@ namespace Theater.Data.Migrations
                             Age = 14,
                             Author = "William Shakespeare",
                             Banner = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/d1b5777a32659e0dd7bab2dbde00a8f9/b_hamlet.png",
-                            Date = new DateTime(2024, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Director = "Ana Sánchez",
                             Genre = "Musical",
                             Length = "2h 15min",
@@ -184,7 +450,7 @@ namespace Theater.Data.Migrations
                             Age = 16,
                             Author = "Andrew Lloyd Webber",
                             Banner = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/a9591f2ecfd2e4928eb7d3ffd374ca4a/b_thenutcracker.png",
-                            Date = new DateTime(2024, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Director = "Daniela Méndez",
                             Genre = "Ballet",
                             Length = "2h 30min",
@@ -200,7 +466,7 @@ namespace Theater.Data.Migrations
                             Age = 18,
                             Author = "Dante Alighieri",
                             Banner = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/f7ec4aaaeafb30de8db7aa06bf7ac08e/b_thedivinecomedy.png",
-                            Date = new DateTime(2024, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Director = "Luis Rosa",
                             Genre = "Drama",
                             Length = "2h 30min",
@@ -216,7 +482,7 @@ namespace Theater.Data.Migrations
                             Age = 16,
                             Author = "Sófocles",
                             Banner = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/3522ef62c7f67a3afaf83d6fcb911fe2/b_oedipustheking.png",
-                            Date = new DateTime(2024, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Director = "Rafael López",
                             Genre = "Tragedia",
                             Length = "2h 45min",
@@ -232,7 +498,7 @@ namespace Theater.Data.Migrations
                             Age = 16,
                             Author = "William Shakespeare",
                             Banner = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/e294cda3a370b5deea4fafd69e3466f9/b_romeoandjuliet.png",
-                            Date = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Director = "Marta Váldez",
                             Genre = "Tragedia",
                             Length = "2h 30min",
@@ -248,7 +514,7 @@ namespace Theater.Data.Migrations
                             Age = 14,
                             Author = "Alan Jay Lerner",
                             Banner = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/a14cf3c7848810881350294b7214a2cd/b_camelot.png",
-                            Date = new DateTime(2024, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Director = "Domingo Gómez",
                             Genre = "Musical",
                             Length = "1h 50min",
@@ -264,7 +530,7 @@ namespace Theater.Data.Migrations
                             Age = 16,
                             Author = "Molière",
                             Banner = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/af886f5ff9d88e8c9d619dfd148427ad/b_ladies.png",
-                            Date = new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Director = "José Luis Alonso",
                             Genre = "Comedia",
                             Length = "1h 30min",
@@ -280,7 +546,7 @@ namespace Theater.Data.Migrations
                             Age = 12,
                             Author = "Fernando de Rojas",
                             Banner = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/292aa53528be96d2eb0c61aee86a59c8/b_lacelestina.png",
-                            Date = new DateTime(2024, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Director = "Macarena Gil",
                             Genre = "Drama",
                             Length = "2h 30min",
@@ -296,7 +562,7 @@ namespace Theater.Data.Migrations
                             Age = 14,
                             Author = "Oscar Wilde",
                             Banner = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/a786ada47aa8254ff8dfa547babe1cdf/b_anidealhusband.png",
-                            Date = new DateTime(2024, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Director = "Pedro Jiménez",
                             Genre = "Comedia",
                             Length = "1h 35min",
@@ -312,7 +578,7 @@ namespace Theater.Data.Migrations
                             Age = 10,
                             Author = "Agatha Christie",
                             Banner = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/dd36636fdd06ef46ce1f6db22217862b/b_themousetrap.png",
-                            Date = new DateTime(2024, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Director = "María García",
                             Genre = "Misterio",
                             Length = "1h 45min",

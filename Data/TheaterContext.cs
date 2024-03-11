@@ -29,7 +29,7 @@ namespace Theater.Data {
                     Director = "Sara García", 
                     Genre = "Musical", 
                     Age = 18, 
-                    Date = new DateTime(2024, 01, 06),
+                    Date = new DateTime(2024, 03, 18),
                     Length = "2h 30min",
                     Price = 20.99M,
                     Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/07ae39b53a3acdc8968c013078a84841/p_thephantomoftheopera.jpeg",
@@ -44,7 +44,7 @@ namespace Theater.Data {
                     Director = "Carlos Montoya", 
                     Genre = "Tragedia", 
                     Age = 16, 
-                    Date = new DateTime(2024, 02, 05),
+                    Date = new DateTime(2024, 03, 22),
                     Length = "2h 40min",
                     Price = 15.99M,
                     Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/ea5ad6e8925b91ef21b62088f648314a/p_macbeth.jpeg",
@@ -59,7 +59,7 @@ namespace Theater.Data {
                     Director = "Ana Sánchez", 
                     Genre = "Musical", 
                     Age = 14, 
-                    Date = new DateTime(2024, 03, 07),
+                    Date = new DateTime(2024, 03, 26),
                     Length = "2h 15min",
                     Price = 15.99M,
                     Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/9fbd3ea41e55810ca3336f994d0a48c6/p_hamlet.jpeg",
@@ -74,7 +74,7 @@ namespace Theater.Data {
                     Director = "Daniela Méndez", 
                     Genre = "Ballet", 
                     Age = 16, 
-                    Date = new DateTime(2024, 02, 16),
+                    Date = new DateTime(2024, 03, 30),
                     Length = "2h 30min",
                     Price = 20.99M,
                     Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/00c2e3e17214c2efa70d280d78233cd4/p_thenutcracker.jpeg",
@@ -89,7 +89,7 @@ namespace Theater.Data {
                     Director = "Luis Rosa", 
                     Genre = "Drama", 
                     Age = 18,
-                    Date = new DateTime(2024, 03, 11),
+                    Date = new DateTime(2024, 04, 06),
                     Length = "2h 30min",
                     Price = 14.99M,
                     Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/1676a101744ff32be3d11e5fb3b8615b/p_thedivinecomedy.jpeg",
@@ -104,7 +104,7 @@ namespace Theater.Data {
                     Director = "Rafael López", 
                     Genre = "Tragedia", 
                     Age = 16, 
-                    Date = new DateTime(2024, 02, 23),
+                    Date = new DateTime(2024, 04, 07),
                     Length = "2h 45min",
                     Price = 19.99M,
                     Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/5db151c70121f5c2f80eb198ebdbba0d/p_oedipustheking.jpeg",
@@ -119,7 +119,7 @@ namespace Theater.Data {
                     Director = "Marta Váldez", 
                     Genre = "Tragedia", 
                     Age = 16, 
-                    Date = new DateTime(2024, 01, 15),
+                    Date = new DateTime(2024, 04, 10),
                     Length = "2h 30min",
                     Price = 9.99M,
                     Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/acb9c14cc16797b00208ce227ee172f3/p_romeoandjuliet.jpeg",
@@ -134,7 +134,7 @@ namespace Theater.Data {
                     Director = "Domingo Gómez", 
                     Genre = "Musical", 
                     Age = 14, 
-                    Date = new DateTime(2024, 03, 21),
+                    Date = new DateTime(2024, 04, 13),
                     Length = "1h 50min",
                     Price = 29.99M,
                     Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/a46e3f593a2193f455774a22b1f54ce3/p_camelot.jpeg",
@@ -149,7 +149,7 @@ namespace Theater.Data {
                     Director = "José Luis Alonso", 
                     Genre = "Comedia", 
                     Age = 16, 
-                    Date = new DateTime(2024, 04, 01),
+                    Date = new DateTime(2024, 04, 18),
                     Length = "1h 30min",
                     Price = 16.99M,
                     Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/1e9abaa74edce8f90bb2261d89f4f96a/p_ladies.jpeg",
@@ -164,7 +164,7 @@ namespace Theater.Data {
                     Director = "Macarena Gil", 
                     Genre = "Drama", 
                     Age = 12, 
-                    Date = new DateTime(2024, 04, 19),
+                    Date = new DateTime(2024, 04, 21),
                     Length = "2h 30min",
                     Price = 12.99M,
                     Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/406d4bad91ab911da6d7728f0f88d24f/p_lacelestina.jpeg",
@@ -179,7 +179,7 @@ namespace Theater.Data {
                     Director = "Pedro Jiménez", 
                     Genre = "Comedia", 
                     Age = 14, 
-                    Date = new DateTime(2024, 04, 21),
+                    Date = new DateTime(2024, 04, 26),
                     Length = "1h 35min",
                     Price = 8.99M,
                     Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/dab8afc2e4fcd8df3b04255035f8db66/p_anidealhusband.jpeg",
@@ -194,7 +194,7 @@ namespace Theater.Data {
                     Director = "María García", 
                     Genre = "Misterio", 
                     Age = 10, 
-                    Date = new DateTime(2024, 01, 25),
+                    Date = new DateTime(2024, 05, 04),
                     Length = "1h 45min",
                     Price = 8.99M,
                     Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/fc3a921c4ea328191548e9bb390304be/p_themousetrap.jpeg",
@@ -202,17 +202,36 @@ namespace Theater.Data {
                     Scene = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/69c7d98a881ef03de9efe739dc24d32f/s_themousetrap.png",
                     Overview = "En el intrigante escenario de 'La Ratonera' de Agatha Christie, los espectadores se sumergen en un misterio envolvente que se desarrolla en el pintoresco Molino Monkswell. La historia comienza cuando un grupo ecléctico de personajes se ve atrapado en una posada durante una tormenta de nieve, desencadenando una serie de eventos que revelan oscuros secretos y conexiones sorprendentes. La trama se teje con maestría, dejando que la sospecha recaiga sobre cada personaje mientras el misterio se desenvuelve. Con giros inesperados y un ingenioso desenlace, Agatha Christie cautiva a la audiencia con su habilidad para mantener en vilo hasta el último momento. 'La Ratonera' se erige como un clásico del suspense, explorando la complejidad de la naturaleza humana y la imprevisibilidad de los secretos bien guardados, dejando a los espectadores absortos en la intriga y el suspenso hasta la última revelación."
                 }
+
+                
             );
 
-            // modelBuilder.Entity<Session>().HasData(
-            //     new Session { SessionId = 1, Hour = new TimeSpan(10, 30, 0), TotalSeats = 60, ShowId = 1 },
-            //     new Session { SessionId = 2, Hour = new TimeSpan(21, 30, 0), TotalSeats = 60, ShowId = 1 }
-            // );
-
-            // modelBuilder.Entity<Seat>().HasData(
-            //     new Seat { SeatId = 1, IsDisponible = false, ShowId = 1, SessionId = 1}
-            // );
-
+            modelBuilder.Entity<Session>().HasData(
+                new Session { SessionId = 1, Hour = "10:30", TotalSeats = 60, Notes = "Mañana", ShowId = 1, Title = "El Fantasma de la Ópera", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/07ae39b53a3acdc8968c013078a84841/p_thephantomoftheopera.jpeg", Date = new DateTime(2024, 03, 18) },
+                new Session { SessionId = 2, Hour = "17:00", TotalSeats = 60, Notes = "Tarde", ShowId = 1, Title = "El Fantasma de la Ópera", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/07ae39b53a3acdc8968c013078a84841/p_thephantomoftheopera.jpeg", Date = new DateTime(2024, 03, 18) },
+                new Session { SessionId = 3, Hour = "09:00", TotalSeats = 60, Notes = "Mañana", ShowId = 2, Title = "Macbeth", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/ea5ad6e8925b91ef21b62088f648314a/p_macbeth.jpeg", Date = new DateTime(2024, 03, 22) },
+                new Session { SessionId = 4, Hour = "18:00", TotalSeats = 60, Notes = "Tarde", ShowId = 2, Title = "Macbeth", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/ea5ad6e8925b91ef21b62088f648314a/p_macbeth.jpeg", Date = new DateTime(2024, 03, 22) },
+                new Session { SessionId = 5, Hour = "11:00", TotalSeats = 60, Notes = "Mañana", ShowId = 3, Title = "Hamlet", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/9fbd3ea41e55810ca3336f994d0a48c6/p_hamlet.jpeg", Date = new DateTime(2024, 03, 26) },
+                new Session { SessionId = 6, Hour = "19:00", TotalSeats = 60, Notes = "Tarde", ShowId = 3, Title = "Hamlet", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/9fbd3ea41e55810ca3336f994d0a48c6/p_hamlet.jpeg", Date = new DateTime(2024, 03, 26) },
+                new Session { SessionId = 7, Hour = "10:30", TotalSeats = 60, Notes = "Mañana", ShowId = 4, Title = "El Cascanueces", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/00c2e3e17214c2efa70d280d78233cd4/p_thenutcracker.jpeg", Date = new DateTime(2024, 03, 30) },
+                new Session { SessionId = 8, Hour = "17:00", TotalSeats = 60, Notes = "Tarde", ShowId = 4, Title = "El Cascanueces", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/00c2e3e17214c2efa70d280d78233cd4/p_thenutcracker.jpeg", Date = new DateTime(2024, 03, 30) },
+                new Session { SessionId = 9, Hour = "09:00", TotalSeats = 60, Notes = "Mañana", ShowId = 5, Title = "Divina Comedia", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/1676a101744ff32be3d11e5fb3b8615b/p_thedivinecomedy.jpeg", Date = new DateTime(2024, 04, 06) },
+                new Session { SessionId = 10, Hour = "18:00", TotalSeats = 60, Notes = "Tarde", ShowId = 5, Title = "Divina Comedia", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/1676a101744ff32be3d11e5fb3b8615b/p_thedivinecomedy.jpeg", Date = new DateTime(2024, 04, 06) },
+                new Session { SessionId = 11, Hour = "11:00", TotalSeats = 60, Notes = "Mañana", ShowId = 6, Title = "Edipo Rey", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/5db151c70121f5c2f80eb198ebdbba0d/p_oedipustheking.jpeg", Date =  new DateTime(2024, 04, 07) },
+                new Session { SessionId = 12, Hour = "19:00", TotalSeats = 60, Notes = "Tarde", ShowId = 6, Title = "Edipo Rey", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/5db151c70121f5c2f80eb198ebdbba0d/p_oedipustheking.jpeg", Date =  new DateTime(2024, 04, 07) },
+                new Session { SessionId = 13, Hour = "10:30", TotalSeats = 60, Notes = "Mañana", ShowId = 7, Title = "Romeo y Julieta", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/acb9c14cc16797b00208ce227ee172f3/p_romeoandjuliet.jpeg", Date = new DateTime(2024, 04, 10) },
+                new Session { SessionId = 14, Hour = "17:00", TotalSeats = 60, Notes = "Tarde", ShowId = 7, Title = "Romeo y Julieta", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/acb9c14cc16797b00208ce227ee172f3/p_romeoandjuliet.jpeg", Date = new DateTime(2024, 04, 10) },
+                new Session { SessionId = 15, Hour = "09:00", TotalSeats = 60, Notes = "Mañana", ShowId = 8, Title = "Camelot", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/a46e3f593a2193f455774a22b1f54ce3/p_camelot.jpeg", Date = new DateTime(2024, 04, 13) },
+                new Session { SessionId = 16, Hour = "18:00", TotalSeats = 60, Notes = "Tarde", ShowId = 8, Title = "Camelot", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/a46e3f593a2193f455774a22b1f54ce3/p_camelot.jpeg", Date = new DateTime(2024, 04, 13) },
+                new Session { SessionId = 17, Hour = "11:00", TotalSeats = 60, Notes = "Mañana", ShowId = 9, Title = "Las Preciosas Ridículas", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/1e9abaa74edce8f90bb2261d89f4f96a/p_ladies.jpeg", Date = new DateTime(2024, 04, 18) },
+                new Session { SessionId = 18, Hour = "20:00", TotalSeats = 60, Notes = "Tarde", ShowId = 9, Title = "Las Preciosas Ridículas", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/1e9abaa74edce8f90bb2261d89f4f96a/p_ladies.jpeg", Date = new DateTime(2024, 04, 18) },
+                new Session { SessionId = 19, Hour = "10:30", TotalSeats = 60, Notes = "Mañana", ShowId = 10, Title = "La Celestina", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/406d4bad91ab911da6d7728f0f88d24f/p_lacelestina.jpeg", Date = new DateTime(2024, 04, 21) }, 
+                new Session { SessionId = 20, Hour = "21:00", TotalSeats = 60, Notes = "Tarde", ShowId = 10, Title = "La Celestina", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/406d4bad91ab911da6d7728f0f88d24f/p_lacelestina.jpeg", Date = new DateTime(2024, 04, 21) }, 
+                new Session { SessionId = 21, Hour = "09:00", TotalSeats = 60, Notes = "Mañana", ShowId = 11, Title = "Un Marido Ideal", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/dab8afc2e4fcd8df3b04255035f8db66/p_anidealhusband.jpeg", Date = new DateTime(2024, 04, 26) },
+                new Session { SessionId = 22, Hour = "17:00", TotalSeats = 60, Notes = "Tarde", ShowId = 11, Title = "Un Marido Ideal", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/dab8afc2e4fcd8df3b04255035f8db66/p_anidealhusband.jpeg", Date = new DateTime(2024, 04, 26) },
+                new Session { SessionId = 23, Hour = "11:00", TotalSeats = 60, Notes = "Mañana", ShowId = 12, Title = "La Ratonera", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/fc3a921c4ea328191548e9bb390304be/p_themousetrap.jpeg", Date = new DateTime(2024, 05, 04) },
+                new Session { SessionId = 24, Hour = "20:00", TotalSeats = 60, Notes = "Tarde", ShowId = 12, Title = "La Ratonera", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/fc3a921c4ea328191548e9bb390304be/p_themousetrap.jpeg", Date = new DateTime(2024, 05, 04) }
+            );
 
         }
 

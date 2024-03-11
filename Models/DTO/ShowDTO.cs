@@ -1,6 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Theater.Models {
     public class ShowDTO {
         public int ShowId { get; set; }

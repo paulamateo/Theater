@@ -15,8 +15,7 @@ public class UserController : ControllerBase {
 
 
     [HttpGet]
-    public ActionResult<List<User>> GetAll() =>
-        _userService.GetAllUsers();
+    public ActionResult<List<User>> GetAll() => _userService.GetAllUsers();
 
     [HttpGet("{userId}")]
     public ActionResult<User> Get(int userId) {
@@ -29,21 +28,28 @@ public class UserController : ControllerBase {
     }
 
     [HttpPost]
-    public IActionResult Create(User user) {            
+    public IActionResult Create([FromBody] User user) {            
         _userService.AddUser(user);
         return CreatedAtAction(nameof(Get), new { userId = user.UserId }, user);
     }
 
     [HttpPut("{userId}")]
-    public IActionResult Update(int userId, User user) {
+    public IActionResult Update(int userId, [FromBody] User user) {
         if (userId != user.UserId)
             return BadRequest();
             
         var existingUser = _userService.GetUserById(userId);
         if(existingUser is null)
             return NotFound();
+
+        existingUser.UserName = user.UserName;
+        existingUser.UserLastname = user.UserLastname;
+        existingUser.Email = user.Email;
+        existingUser.Password = user.Password;
+        existingUser.PhoneNumber = user.PhoneNumber;
+        existingUser.IsAdmin = user.IsAdmin;
     
-        _userService.UpdateUser(user);           
+        _userService.UpdateUser(existingUser);           
         return NoContent();
     }
 

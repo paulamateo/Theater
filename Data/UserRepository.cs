@@ -36,42 +36,10 @@ namespace Theater.Data {
             SaveChanges();
         }
 
-        // public void UpdateUser(User user) {
-        //     var userToBeUpdated = GetUserById(user.UserId);
-
-        //     if (userToBeUpdated != null) {
-        //         userToBeUpdated.UserName = user.UserName;
-        //         userToBeUpdated.UserLastname = user.UserLastname;
-        //         userToBeUpdated.Email = user.Email;
-
-        //     }
-
-            
-        //     if (userUpdated is null)
-        // {
-        //     throw new KeyNotFoundException("No se encontro la obra a actualizar.");
-        // }
-        //     _context.Entry(userUpdated).CurrentValues.SetValues(user);
-        //     SaveChanges();
-        // }
-
         public void UpdateUser(User user) {
             _context.Entry(user).State = EntityState.Modified;
             SaveChanges();
         } 
-
-//         public void UpdateUser(User user)
-// {
-//     var existingUser = GetUserById(user.UserId); // Buscamos el usuario existente en la base de datos
-
-//     if (existingUser != null)
-//     {
-//         _context.Entry(existingUser).CurrentValues.SetValues(user); // Actualizamos las propiedades del usuario existente con los valores del usuario pasado como parámetro
-//         _context.SaveChanges(); // Guardamos los cambios en la base de datos
-//     }
-// }
-
-
         
     }
     
