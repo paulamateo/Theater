@@ -110,7 +110,7 @@ public class SessionController : ControllerBase {
         if (session is null) {
             throw new KeyNotFoundException("Session not found.");
         } 
-
+      
         _sessionService.AddSeat(sessionId, seat);
         return CreatedAtAction(nameof(GetSeat), new { sessionId = sessionId, seatId = seat.SeatId }, seat);
     }

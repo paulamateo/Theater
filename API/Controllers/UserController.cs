@@ -13,7 +13,7 @@ public class UserController : ControllerBase {
         _userService = userService;
     }
 
-
+    //USERS
     [HttpGet]
     public ActionResult<List<User>> GetAll() => _userService.GetAllUsers();
 
@@ -63,6 +63,17 @@ public class UserController : ControllerBase {
         _userService.DeleteUser(userId);
     
         return NoContent();
+    }
+
+    //ADMIN
+    [HttpPost("/AuthenticateAdmin")]
+    public IActionResult AuthenticateAdmin([FromBody] User user) {
+        var isAuthenticated = _userService.AuthenticateAdmin(user.Email, user.Password);
+
+        if (!isAuthenticated)
+            return Unauthorized();
+
+        return Ok("Admin authenticated successfully.");
     }
 
 }

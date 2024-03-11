@@ -41,6 +41,11 @@ namespace Theater.Data {
             SaveChanges();
         } 
         
+        public bool AuthenticateAdmin(string email, string password) {
+            var user = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+            return user != null;
+        }
+
     }
     
 }

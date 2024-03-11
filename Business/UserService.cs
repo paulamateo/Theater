@@ -15,6 +15,7 @@ namespace Theater.Business {
         public void AddUser(User user) => _userRepository.AddUser(user);
         public void UpdateUser(User user) => _userRepository.UpdateUser(user);
         public void DeleteUser(int userId) => _userRepository.DeleteUser(userId);
+        public bool AuthenticateAdmin(string email, string password) => _userRepository.AuthenticateAdmin(email, password);
 
     }
 
