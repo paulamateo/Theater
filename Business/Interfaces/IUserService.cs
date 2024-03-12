@@ -7,6 +7,6 @@ namespace Theater.Business {
         void AddUser(User user);
         void DeleteUser(int userId);
         void UpdateUser(User user);
-        bool AuthenticateAdmin(string email, string password);
+        User? Login(string email, string password);
     }
 }

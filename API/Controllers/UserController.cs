@@ -1,6 +1,7 @@
 using Theater.Models;
 using Theater.Business;
 using Microsoft.AspNetCore.Mvc;
+using Theater.Data;
 
 namespace Theater.Controllers;
 
@@ -66,19 +67,35 @@ public class UserController : ControllerBase {
     }
 
     //ADMIN
-    [HttpPost("/AuthenticateAdmin")]
-    public IActionResult AuthenticateAdmin([FromBody] User user) {
-        if (user.Email == null || user.Password == null) {
-            return BadRequest();
-        }
-        
-        var isAuthenticated = _userService.AuthenticateAdmin(user.Email, user.Password);
+    [HttpPost("Login")]
+    public ActionResult<User> Login([FromBody] UserLoginDTO loginDto) {
 
-        if (!isAuthenticated) {
+        var user = _userService.Login(loginDto.Email, loginDto.Password);
+
+        if (user == null) {
             return Unauthorized();
         }
 
-        return Ok();
+        return Ok(user);
     }
+
+
+//     [HttpPost("/AuthenticateAdmin")]
+//     public ActionResult<User> AuthenticateAdmin([FromBody] UserLoginDTO user) {
+//         if (user.Email == null || user.Password == null) {
+//             return BadRequest();
+//         }
+
+//         var authenticateUser = new User {
+//             Email = user.Email,
+//             Password = user.Password
+//         };
+
+//         _userService.AuthenticateAdmin(authenticateUser.Email, authenticateUser.Password);
+//         if (authenticateUser == null) {
+//     return Unauthorized(); // O BadRequest, dependiendo de tu preferencia
+// }
+// return Ok(authenticateUser); 
+//     }
 
 }

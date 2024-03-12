@@ -40,12 +40,36 @@ namespace Theater.Data {
             _context.Entry(user).State = EntityState.Modified;
             SaveChanges();
         } 
-        
-        public bool AuthenticateAdmin(string email, string password) {
-            var user = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
-            return user != null;
-        }
 
-    }
+        public User? Login(string email, string password) {
+            var user = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password && u.IsAdmin);
+
+            if(user == null) {
+                return null;
+            }
+
+            return user;
+        }
+        
+        // public User? AuthenticateAdmin(string email, string password) {
+        //     var user = GetAllUsers().FirstOrDefault(u => u.Email == email && u.Password == password);
+        //     return user;
+        // }
+
+        // public bool AuthenticateAdmin(string email, string password) {
+        //     var user = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+        //     return user != null;
+        // }
+
+        
+//    public UserLoginDTO? AuthenticateAdmin(string email, string password) {
+//             var user = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+//             var userToValidate = new UserLoginDTO {
+//                 Email = user.Email,
+//                 Password = user.Password
+//             };
+//             return userToValidate;
+//         }
+  }
     
 }
