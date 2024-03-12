@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theater.Models", "Models\Theater.Models.csproj", "{AC0F1C51-575E-47D5-A11E-0C380E0F918A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theater.Data", "Data\Theater.Data.csproj", "{0CED05C5-A448-4AFC-9E8C-87D96298CC04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theater.Business", "Business\Theater.Business.csproj", "{2CE63D6C-C2A4-4664-B80F-072C0842341C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theater.API", "API\Theater.API.csproj", "{B122D811-C5A2-43F4-91B3-4DC0F1299126}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC0F1C51-575E-47D5-A11E-0C380E0F918A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC0F1C51-575E-47D5-A11E-0C380E0F918A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC0F1C51-575E-47D5-A11E-0C380E0F918A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC0F1C51-575E-47D5-A11E-0C380E0F918A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CED05C5-A448-4AFC-9E8C-87D96298CC04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CED05C5-A448-4AFC-9E8C-87D96298CC04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CED05C5-A448-4AFC-9E8C-87D96298CC04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CED05C5-A448-4AFC-9E8C-87D96298CC04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CE63D6C-C2A4-4664-B80F-072C0842341C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CE63D6C-C2A4-4664-B80F-072C0842341C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CE63D6C-C2A4-4664-B80F-072C0842341C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CE63D6C-C2A4-4664-B80F-072C0842341C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B122D811-C5A2-43F4-91B3-4DC0F1299126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B122D811-C5A2-43F4-91B3-4DC0F1299126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B122D811-C5A2-43F4-91B3-4DC0F1299126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B122D811-C5A2-43F4-91B3-4DC0F1299126}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

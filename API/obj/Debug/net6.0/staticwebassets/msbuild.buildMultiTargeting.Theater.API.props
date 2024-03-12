@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Theater.API.props" />
+</Project>
