@@ -68,12 +68,17 @@ public class UserController : ControllerBase {
     //ADMIN
     [HttpPost("/AuthenticateAdmin")]
     public IActionResult AuthenticateAdmin([FromBody] User user) {
+        if (user.Email == null || user.Password == null) {
+            return BadRequest();
+        }
+        
         var isAuthenticated = _userService.AuthenticateAdmin(user.Email, user.Password);
 
-        if (!isAuthenticated)
+        if (!isAuthenticated) {
             return Unauthorized();
+        }
 
-        return Ok("Admin authenticated successfully.");
+        return Ok();
     }
 
 }
