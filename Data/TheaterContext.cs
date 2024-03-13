@@ -14,8 +14,14 @@ namespace Theater.Data {
         public DbSet<User> Users { get; set; }
         public DbSet<Seat> Seats { get; set; }
         public DbSet<Session> Sessions { get; set; }
+        public DbSet<Purchase> Purchases { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) { 
+            modelBuilder.Entity<Show>()
+                .HasMany(s => s.Sessions)
+                .WithOne()
+                .HasForeignKey(session => session.ShowId);
+
             modelBuilder.Entity<User>().HasData(
                 new User { UserId = 1, UserName = "Paula", UserLastname = "Mateo", Email = "a26619@svalero.com", Password = "1234", PhoneNumber = "123456789", IsAdmin = true},
                 new User { UserId = 2, UserName = "Paula", UserLastname = "Mateo", Email = "paulamateob@gmail.com", Password = "prueba", PhoneNumber = "123456789", IsAdmin = false}
