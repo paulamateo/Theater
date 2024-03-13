@@ -14,9 +14,11 @@ builder.Services.AddDbContext<TheaterContext>(options =>
 builder.Services.AddScoped<IShowRepository, ShowRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ISessionRepository, SessionRepository>();
+builder.Services.AddScoped<IPurchaseRepository, PurchaseRepository>();
 builder.Services.AddScoped<IShowService, ShowService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISessionService, SessionService>();
+builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 
 
   

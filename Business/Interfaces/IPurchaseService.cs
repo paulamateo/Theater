@@ -1,11 +1,9 @@
 using Theater.Models;
 
-namespace Theater.Data {
-
-    public interface IPurchaseRepository {
+namespace Theater.Business { 
+    public interface IPurchaseService {
         List<Purchase> GetAllPurchases();
         Purchase? GetPurchase(int purchaseId);
         void AddPurchase(Purchase purchase);
     }
-
 }

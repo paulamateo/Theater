@@ -14,7 +14,6 @@ public class UserController : ControllerBase {
         _userService = userService;
     }
 
-    //USERS
     [HttpGet]
     public ActionResult<List<User>> GetAll() => _userService.GetAllUsers();
 
@@ -26,12 +25,6 @@ public class UserController : ControllerBase {
             return NotFound();
 
         return user;
-    }
-
-    [HttpPost]
-    public IActionResult Create([FromBody] User user) {            
-        _userService.AddUser(user);
-        return CreatedAtAction(nameof(Get), new { userId = user.UserId }, user);
     }
 
     [HttpPut("{userId}")]
@@ -65,37 +58,5 @@ public class UserController : ControllerBase {
     
         return NoContent();
     }
-
-    //ADMIN
-    [HttpPost("Login")]
-    public ActionResult<User> Login([FromBody] UserLoginDTO loginDto) {
-
-        var user = _userService.Login(loginDto.Email, loginDto.Password);
-
-        if (user == null) {
-            return Unauthorized();
-        }
-
-        return Ok(user);
-    }
-
-
-//     [HttpPost("/AuthenticateAdmin")]
-//     public ActionResult<User> AuthenticateAdmin([FromBody] UserLoginDTO user) {
-//         if (user.Email == null || user.Password == null) {
-//             return BadRequest();
-//         }
-
-//         var authenticateUser = new User {
-//             Email = user.Email,
-//             Password = user.Password
-//         };
-
-//         _userService.AuthenticateAdmin(authenticateUser.Email, authenticateUser.Password);
-//         if (authenticateUser == null) {
-//     return Unauthorized(); // O BadRequest, dependiendo de tu preferencia
-// }
-// return Ok(authenticateUser); 
-//     }
 
 }

@@ -13,6 +13,6 @@ namespace Theater.Models {
         public decimal TotalPrice { get; set; }
         public string? Title { get; set; }
         public int SessionId { get; set; }
-        public List<Seat>? ReservedSeats { get; set; }
+        public List<Seat>? ReservedSeats { get; set; } = new List<Seat>();
     }
 }

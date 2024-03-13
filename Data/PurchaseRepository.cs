@@ -20,6 +20,10 @@ namespace Theater.Data {
             return _context.Purchases.ToList();
         }
 
+        public Purchase? GetPurchase(int purchaseId) {
+            return _context.Purchases.FirstOrDefault(p => p.PurchaseId == purchaseId);
+        }
+
         public void AddPurchase(Purchase purchase) {
             _context.Purchases.Add(purchase);
             SaveChanges();

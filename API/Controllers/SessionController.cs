@@ -104,15 +104,34 @@ public class SessionController : ControllerBase {
     }
 
     [HttpPost("{sessionId}/Seats")]
-     public IActionResult CreateSeat(int sessionId, [FromBody] Seat seat) {    
+     public IActionResult CreateSeat(int sessionId, [FromBody] SeatCreateDTO seat) {    
         var session = _sessionService.GetSessionById(sessionId);
 
         if (session is null) {
             throw new KeyNotFoundException("Session not found.");
         } 
+
+        var newSeat = new Seat {
+            SeatIdReserved = seat.SeatIdReserved,
+            IsDisponible = seat.IsDisponible,
+            SessionId = seat.SessionId
+        };
       
-        _sessionService.AddSeat(sessionId, seat);
+        _sessionService.AddSeat(sessionId, newSeat);
         return CreatedAtAction(nameof(GetSeat), new { sessionId = sessionId, seatId = seat.SeatId }, seat);
     }
+
+
+    //  [HttpPost("{sessionId}/Seats")]
+    //  public IActionResult CreateSeat(int sessionId, [FromBody] Seat seat) {    
+    //     var session = _sessionService.GetSessionById(sessionId);
+
+    //     if (session is null) {
+    //         throw new KeyNotFoundException("Session not found.");
+    //     } 
+      
+    //     _sessionService.AddSeat(sessionId, seat);
+    //     return CreatedAtAction(nameof(GetSeat), new { sessionId = sessionId, seatId = seat.SeatId }, seat);
+    // }
 
 }
