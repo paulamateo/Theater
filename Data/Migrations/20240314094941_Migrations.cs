@@ -99,7 +99,8 @@ namespace Theater.Data.Migrations
                 name: "Seats",
                 columns: table => new
                 {
-                    SeatId = table.Column<int>(type: "int", nullable: false),
+                    SeatId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     SeatIdReserved = table.Column<int>(type: "int", nullable: false),
                     IsDisponible = table.Column<bool>(type: "bit", nullable: false),
                     SessionId = table.Column<int>(type: "int", nullable: false),
@@ -109,11 +110,10 @@ namespace Theater.Data.Migrations
                 {
                     table.PrimaryKey("PK_Seats", x => x.SeatId);
                     table.ForeignKey(
-                        name: "FK_Seats_Purchases_SeatId",
-                        column: x => x.SeatId,
+                        name: "FK_Seats_Purchases_PurchaseId",
+                        column: x => x.PurchaseId,
                         principalTable: "Purchases",
-                        principalColumn: "PurchaseId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PurchaseId");
                     table.ForeignKey(
                         name: "FK_Seats_Sessions_SessionId",
                         column: x => x.SessionId,
@@ -180,6 +180,11 @@ namespace Theater.Data.Migrations
                     { 23, new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "11:00", "Mañana", "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/fc3a921c4ea328191548e9bb390304be/p_themousetrap.jpeg", 12, "La Ratonera", 60 },
                     { 24, new DateTime(2024, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "20:00", "Tarde", "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/fc3a921c4ea328191548e9bb390304be/p_themousetrap.jpeg", 12, "La Ratonera", 60 }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Seats_PurchaseId",
+                table: "Seats",
+                column: "PurchaseId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Seats_SessionId",

@@ -12,8 +12,8 @@ using Theater.Data;
 namespace Theater.Data.Migrations
 {
     [DbContext(typeof(TheaterContext))]
-    [Migration("20240314033448_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240314094941_Migrations")]
+    partial class Migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,7 +61,10 @@ namespace Theater.Data.Migrations
             modelBuilder.Entity("Theater.Models.Seat", b =>
                 {
                     b.Property<int>("SeatId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeatId"), 1L, 1);
 
                     b.Property<bool>("IsDisponible")
                         .HasColumnType("bit");
@@ -76,6 +79,8 @@ namespace Theater.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("SeatId");
+
+                    b.HasIndex("PurchaseId");
 
                     b.HasIndex("SessionId");
 
@@ -684,9 +689,7 @@ namespace Theater.Data.Migrations
                 {
                     b.HasOne("Theater.Models.Purchase", null)
                         .WithMany("ReservedSeats")
-                        .HasForeignKey("SeatId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PurchaseId");
 
                     b.HasOne("Theater.Models.Session", null)
                         .WithMany("Seats")

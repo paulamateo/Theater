@@ -4,7 +4,7 @@
 
 namespace Theater.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class purchase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

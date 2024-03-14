@@ -7,6 +7,5 @@ namespace Theater.Models {
         public int SeatIdReserved { get; set; }
         public bool IsDisponible { get; set; }
         public int SessionId { get; set; }
-        public int? PurchaseId { get; set; }
     }
 }
