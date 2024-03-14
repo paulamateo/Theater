@@ -22,15 +22,15 @@ namespace Theater.Data {
                 .WithOne()
                 .HasForeignKey(session => session.ShowId);
             
-            modelBuilder.Entity<Session>()
-                .HasMany(s => s.Seats)
+            // modelBuilder.Entity<Seat>()
+            //     .HasMany(s => s.Purchase)
+            //     .WithMany(p => p.ReservedSeats)
+            //     .HasForeignKey(s => s.PurchaseId);
+
+            modelBuilder.Entity<Purchase>()
+                .HasMany(p => p.ReservedSeats)
                 .WithOne()
-                .HasForeignKey(s => s.SessionId);
-            
-            modelBuilder.Entity<Seat>()
-                .HasOne(s => s.Purchase)
-                .WithMany(p => p.ReservedSeats)
-                .HasForeignKey(s => s.PurchaseId); 
+                .HasForeignKey(seat => seat.SeatId);
 
             modelBuilder.Entity<User>().HasData(
                 new User { UserId = 1, UserName = "Paula", UserLastname = "Mateo", Email = "a26619@svalero.com", Password = "1234", PhoneNumber = "123456789", IsAdmin = true},
@@ -248,7 +248,6 @@ namespace Theater.Data {
                 new Session { SessionId = 23, Hour = "11:00", TotalSeats = 60, Notes = "Mañana", ShowId = 12, Title = "La Ratonera", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/fc3a921c4ea328191548e9bb390304be/p_themousetrap.jpeg", Date = new DateTime(2024, 05, 04) },
                 new Session { SessionId = 24, Hour = "20:00", TotalSeats = 60, Notes = "Tarde", ShowId = 12, Title = "La Ratonera", Poster = "https://storage.kraken.io/ZBONL73pVgSYgrww7BGD/fc3a921c4ea328191548e9bb390304be/p_themousetrap.jpeg", Date = new DateTime(2024, 05, 04) }
             );
-
         }
 
     }

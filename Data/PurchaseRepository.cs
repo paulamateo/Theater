@@ -17,7 +17,7 @@ namespace Theater.Data {
         }
 
         public List<Purchase> GetAllPurchases() {
-            return _context.Purchases.ToList();
+            return _context.Purchases.Include(p => p.ReservedSeats).ToList();
         }
 
         public Purchase? GetPurchase(int purchaseId) {

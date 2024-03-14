@@ -12,8 +12,8 @@ using Theater.Data;
 namespace Theater.Data.Migrations
 {
     [DbContext(typeof(TheaterContext))]
-    [Migration("20240312162140_Login")]
-    partial class Login
+    [Migration("20240314033448_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,16 +24,50 @@ namespace Theater.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Theater.Models.Seat", b =>
+            modelBuilder.Entity("Theater.Models.Purchase", b =>
                 {
-                    b.Property<int>("SeatId")
+                    b.Property<int>("PurchaseId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeatId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PurchaseId"), 1L, 1);
+
+                    b.Property<string>("BuyerEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BuyerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BuyerPhone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DatePurchase")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("SessionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("PurchaseId");
+
+                    b.ToTable("Purchases");
+                });
+
+            modelBuilder.Entity("Theater.Models.Seat", b =>
+                {
+                    b.Property<int>("SeatId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDisponible")
                         .HasColumnType("bit");
+
+                    b.Property<int?>("PurchaseId")
+                        .HasColumnType("int");
 
                     b.Property<int>("SeatIdReserved")
                         .HasColumnType("int");
@@ -648,6 +682,12 @@ namespace Theater.Data.Migrations
 
             modelBuilder.Entity("Theater.Models.Seat", b =>
                 {
+                    b.HasOne("Theater.Models.Purchase", null)
+                        .WithMany("ReservedSeats")
+                        .HasForeignKey("SeatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Theater.Models.Session", null)
                         .WithMany("Seats")
                         .HasForeignKey("SessionId")
@@ -662,6 +702,11 @@ namespace Theater.Data.Migrations
                         .HasForeignKey("ShowId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Theater.Models.Purchase", b =>
+                {
+                    b.Navigation("ReservedSeats");
                 });
 
             modelBuilder.Entity("Theater.Models.Session", b =>

@@ -8,8 +8,10 @@ namespace Theater.Controllers;
 [Route("[controller]")]
 public class AuthController : ControllerBase {
     private readonly IUserService _userService;
+    private readonly ILogger<AuthController> _logger;
 
-    public AuthController (IUserService userService) {
+    public AuthController (ILogger<AuthController> logger, IUserService userService) {
+        _logger = logger;
         _userService = userService;
     }
 

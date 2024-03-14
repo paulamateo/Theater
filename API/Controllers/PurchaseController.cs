@@ -28,7 +28,7 @@ public class PurchaseController : ControllerBase {
     }
     
     [HttpPost()]
-    public IActionResult Create([FromBody] Purchase purchase) {            
+    public IActionResult Create([FromBody] Purchase purchase) {    
         _purchaseService.AddPurchase(purchase);
         return CreatedAtAction(nameof(Get), new { purchaseId = purchase.PurchaseId }, purchase);
     }

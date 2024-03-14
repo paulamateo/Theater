@@ -10,6 +10,25 @@ namespace Theater.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Purchases",
+                columns: table => new
+                {
+                    PurchaseId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DatePurchase = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    BuyerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BuyerPhone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BuyerEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SessionId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Purchases", x => x.PurchaseId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Shows",
                 columns: table => new
                 {
@@ -80,14 +99,21 @@ namespace Theater.Data.Migrations
                 name: "Seats",
                 columns: table => new
                 {
-                    SeatId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SeatId = table.Column<int>(type: "int", nullable: false),
+                    SeatIdReserved = table.Column<int>(type: "int", nullable: false),
                     IsDisponible = table.Column<bool>(type: "bit", nullable: false),
-                    SessionId = table.Column<int>(type: "int", nullable: false)
+                    SessionId = table.Column<int>(type: "int", nullable: false),
+                    PurchaseId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Seats", x => x.SeatId);
+                    table.ForeignKey(
+                        name: "FK_Seats_Purchases_SeatId",
+                        column: x => x.SeatId,
+                        principalTable: "Purchases",
+                        principalColumn: "PurchaseId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Seats_Sessions_SessionId",
                         column: x => x.SessionId,
@@ -173,6 +199,9 @@ namespace Theater.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Purchases");
 
             migrationBuilder.DropTable(
                 name: "Sessions");

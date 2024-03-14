@@ -59,10 +59,7 @@ namespace Theater.Data.Migrations
             modelBuilder.Entity("Theater.Models.Seat", b =>
                 {
                     b.Property<int>("SeatId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeatId"), 1L, 1);
 
                     b.Property<bool>("IsDisponible")
                         .HasColumnType("bit");
@@ -77,8 +74,6 @@ namespace Theater.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("SeatId");
-
-                    b.HasIndex("PurchaseId");
 
                     b.HasIndex("SessionId");
 
@@ -685,17 +680,17 @@ namespace Theater.Data.Migrations
 
             modelBuilder.Entity("Theater.Models.Seat", b =>
                 {
-                    b.HasOne("Theater.Models.Purchase", "Purchase")
+                    b.HasOne("Theater.Models.Purchase", null)
                         .WithMany("ReservedSeats")
-                        .HasForeignKey("PurchaseId");
+                        .HasForeignKey("SeatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Theater.Models.Session", null)
                         .WithMany("Seats")
                         .HasForeignKey("SessionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Purchase");
                 });
 
             modelBuilder.Entity("Theater.Models.Session", b =>

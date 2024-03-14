@@ -8,6 +8,5 @@ namespace Theater.Models {
         public bool IsDisponible { get; set; }
         public int SessionId { get; set; }
         public int? PurchaseId { get; set; }
-        public Purchase? Purchase { get; set; }
     }
 }
