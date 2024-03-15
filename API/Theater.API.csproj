@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Business\Theater.Business.csproj" />
     <ProjectReference Include="..\Data\Theater.Data.csproj" />
     <ProjectReference Include="..\Models\Theater.Models.csproj" />
+    <ProjectReference Include="..\Logging\Theater.Logging.csproj" />
   </ItemGroup>
 
 </Project>

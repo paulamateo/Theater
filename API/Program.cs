@@ -1,6 +1,7 @@
 using Theater.Business;
 using Theater.Data;
 using Microsoft.EntityFrameworkCore;
+using Theater.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddScoped<IShowService, ShowService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<IPurchaseService, PurchaseService>();
+builder.Services.AddScoped<ILogMethod, LogMethod>();
 
 
   

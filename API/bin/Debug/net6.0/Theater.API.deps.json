@@ -12,6 +12,7 @@
           "Swashbuckle.AspNetCore": "6.5.0",
           "Theater.Business": "1.0.0",
           "Theater.Data": "1.0.0",
+          "Theater.Logging": "1.0.0",
           "Theater.Models": "1.0.0"
         },
         "runtime": {
@@ -551,6 +552,14 @@
           "Theater.Data.dll": {}
         }
       },
+      "Theater.Logging/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "6.0.0"
+        },
+        "runtime": {
+          "Theater.Logging.dll": {}
+        }
+      },
       "Theater.Models/1.0.0": {
         "runtime": {
           "Theater.Models.dll": {}
@@ -941,6 +950,11 @@
       "sha512": ""
     },
     "Theater.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Theater.Logging/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -6,6 +6,7 @@ COPY Models/*.csproj Models/
 COPY Business/*.csproj Business/
 COPY Data/*.csproj Data/
 COPY API/*.csproj API/
+COPY Logging/*.csproj Logging/
 RUN dotnet restore Theater.sln
 
 COPY . .
