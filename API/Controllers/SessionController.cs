@@ -15,7 +15,6 @@ public class SessionController : ControllerBase {
         _showService = showService;
     }
 
-    //SESSIONS
     [HttpGet()]
     public ActionResult<List<Session>> GetAllSessions() =>
         _sessionService.GetAllSessions();
@@ -81,7 +80,6 @@ public class SessionController : ControllerBase {
         return NoContent();
     }
 
-    //SEATS
     [HttpGet("{sessionId}/Seats")]
     public ActionResult<List<Seat>> GetAllSeats(int sessionId) {
         var session = _sessionService.GetSessionById(sessionId);
@@ -120,18 +118,5 @@ public class SessionController : ControllerBase {
         _sessionService.AddSeat(sessionId, newSeat);
         return CreatedAtAction(nameof(GetSeat), new { sessionId = sessionId, seatId = seat.SeatId }, seat);
     }
-
-
-    //  [HttpPost("{sessionId}/Seats")]
-    //  public IActionResult CreateSeat(int sessionId, [FromBody] Seat seat) {    
-    //     var session = _sessionService.GetSessionById(sessionId);
-
-    //     if (session is null) {
-    //         throw new KeyNotFoundException("Session not found.");
-    //     } 
-      
-    //     _sessionService.AddSeat(sessionId, seat);
-    //     return CreatedAtAction(nameof(GetSeat), new { sessionId = sessionId, seatId = seat.SeatId }, seat);
-    // }
 
 }

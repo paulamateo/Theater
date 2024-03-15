@@ -27,6 +27,12 @@ public class UserController : ControllerBase {
         return user;
     }
 
+    [HttpPost]
+    public IActionResult Create([FromBody] User user) {            
+        _userService.AddUser(user);
+        return CreatedAtAction(nameof(Get), new { userId = user.UserId }, user);
+    }
+
     [HttpPut("{userId}")]
     public IActionResult Update(int userId, [FromBody] User user) {
         if (userId != user.UserId)
