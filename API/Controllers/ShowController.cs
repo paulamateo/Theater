@@ -28,15 +28,34 @@ public class ShowController : ControllerBase {
         return show;
     }
 
-    [HttpGet("ByName/{title}")]
-    public ActionResult<Show> GetByTitle(string title) {
-        var show = _showService.GetShowByTitle(title);
+    // [HttpGet("ByName/{title}")]
+    // public ActionResult<Show> GetByTitle(string title) {
+    //     var show = _showService.GetShowByTitle(title);
 
+    //     if(show == null)
+    //         return NotFound();
+
+    //     return show;
+    // }
+
+    [HttpGet("search/")]
+    public ActionResult<IEnumerable<Show>> SearchShowByName ([FromQuery] string title) {
+        var show = _showService.GetShowByTitle(title);
         if(show == null)
             return NotFound();
 
-        return show;
+        return Ok(show); 
     }
+
+    [HttpGet("/ordered")]
+    public ActionResult<IEnumerable<Show>> GetAllOrderedByTitle() {
+        var shows = _showService.GetAllShows()
+                                .OrderBy(s => s.Title)
+                                .ToList();
+
+        return shows;
+    }
+
 
     [HttpGet("{showId}/Session")]
     public ActionResult<List<Session>> GetSessionsByShow(int showId) {
