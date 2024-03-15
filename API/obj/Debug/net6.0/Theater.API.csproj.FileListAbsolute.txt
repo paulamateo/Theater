@@ -149,3 +149,5 @@ C:\Users\paula\Documents\Theater\API\obj\Debug\net6.0\refint\Theater.API.dll
 C:\Users\paula\Documents\Theater\API\obj\Debug\net6.0\Theater.API.pdb
 C:\Users\paula\Documents\Theater\API\obj\Debug\net6.0\Theater.API.genruntimeconfig.cache
 C:\Users\paula\Documents\Theater\API\obj\Debug\net6.0\ref\Theater.API.dll
+C:\Users\S2-PC00\Documents\Theater\API\bin\Debug\net6.0\Theater.Logging.dll
+C:\Users\S2-PC00\Documents\Theater\API\bin\Debug\net6.0\Theater.Logging.pdb
