@@ -12,7 +12,7 @@ using Theater.Data;
 namespace Theater.Data.Migrations
 {
     [DbContext(typeof(TheaterContext))]
-    [Migration("20240314094941_Migrations")]
+    [Migration("20240316030414_Migrations")]
     partial class Migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,6 +69,30 @@ namespace Theater.Data.Migrations
                     b.Property<bool>("IsDisponible")
                         .HasColumnType("bit");
 
+                    b.Property<int>("SeatIdReserved")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SessionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SeatId");
+
+                    b.HasIndex("SessionId");
+
+                    b.ToTable("Seats");
+                });
+
+            modelBuilder.Entity("Theater.Models.SeatCreateDTO", b =>
+                {
+                    b.Property<int>("SeatId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeatId"), 1L, 1);
+
+                    b.Property<bool>("IsDisponible")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("PurchaseId")
                         .HasColumnType("int");
 
@@ -82,9 +106,7 @@ namespace Theater.Data.Migrations
 
                     b.HasIndex("PurchaseId");
 
-                    b.HasIndex("SessionId");
-
-                    b.ToTable("Seats");
+                    b.ToTable("SeatCreateDTO");
                 });
 
             modelBuilder.Entity("Theater.Models.Session", b =>
@@ -687,15 +709,18 @@ namespace Theater.Data.Migrations
 
             modelBuilder.Entity("Theater.Models.Seat", b =>
                 {
-                    b.HasOne("Theater.Models.Purchase", null)
-                        .WithMany("ReservedSeats")
-                        .HasForeignKey("PurchaseId");
-
                     b.HasOne("Theater.Models.Session", null)
                         .WithMany("Seats")
                         .HasForeignKey("SessionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Theater.Models.SeatCreateDTO", b =>
+                {
+                    b.HasOne("Theater.Models.Purchase", null)
+                        .WithMany("ReservedSeats")
+                        .HasForeignKey("PurchaseId");
                 });
 
             modelBuilder.Entity("Theater.Models.Session", b =>

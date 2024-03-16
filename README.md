@@ -13,7 +13,6 @@
 
      docker-compose up --build --force-recreate -d 
      docker-compose down
-     docker-compose down -v
 
 ### Entity Framework
 

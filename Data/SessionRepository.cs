@@ -19,7 +19,6 @@ namespace Theater.Data {
             _context.SaveChanges();
         }
 
-        //SESSIONS
         public List<Session> GetAllSessions() {
             return _context.Sessions.Include(s => s.Seats).ToList();
         }
@@ -48,7 +47,6 @@ namespace Theater.Data {
             SaveChanges();
         }
 
-        //SEATS
         public List<Seat> GetSeatsBySession(int sessionId) {
             return _context.Seats.Where(s => s.SessionId == sessionId).ToList();
         }

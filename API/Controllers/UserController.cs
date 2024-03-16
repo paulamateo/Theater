@@ -24,7 +24,7 @@ public class UserController : ControllerBase {
         if(user == null)
             return NotFound();
 
-        return user;
+        return Ok(user);
     }
 
     [HttpPost]

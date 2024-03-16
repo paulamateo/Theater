@@ -71,6 +71,27 @@ namespace Theater.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SeatCreateDTO",
+                columns: table => new
+                {
+                    SeatId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SeatIdReserved = table.Column<int>(type: "int", nullable: false),
+                    IsDisponible = table.Column<bool>(type: "bit", nullable: false),
+                    SessionId = table.Column<int>(type: "int", nullable: false),
+                    PurchaseId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SeatCreateDTO", x => x.SeatId);
+                    table.ForeignKey(
+                        name: "FK_SeatCreateDTO_Purchases_PurchaseId",
+                        column: x => x.PurchaseId,
+                        principalTable: "Purchases",
+                        principalColumn: "PurchaseId");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Sessions",
                 columns: table => new
                 {
@@ -103,17 +124,11 @@ namespace Theater.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SeatIdReserved = table.Column<int>(type: "int", nullable: false),
                     IsDisponible = table.Column<bool>(type: "bit", nullable: false),
-                    SessionId = table.Column<int>(type: "int", nullable: false),
-                    PurchaseId = table.Column<int>(type: "int", nullable: true)
+                    SessionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Seats", x => x.SeatId);
-                    table.ForeignKey(
-                        name: "FK_Seats_Purchases_PurchaseId",
-                        column: x => x.PurchaseId,
-                        principalTable: "Purchases",
-                        principalColumn: "PurchaseId");
                     table.ForeignKey(
                         name: "FK_Seats_Sessions_SessionId",
                         column: x => x.SessionId,
@@ -182,8 +197,8 @@ namespace Theater.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Seats_PurchaseId",
-                table: "Seats",
+                name: "IX_SeatCreateDTO_PurchaseId",
+                table: "SeatCreateDTO",
                 column: "PurchaseId");
 
             migrationBuilder.CreateIndex(
@@ -199,6 +214,9 @@ namespace Theater.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "SeatCreateDTO");
+
             migrationBuilder.DropTable(
                 name: "Seats");
 
