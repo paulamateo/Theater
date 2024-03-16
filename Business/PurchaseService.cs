@@ -11,7 +11,9 @@ namespace Theater.Business {
         } 
 
         public List<Purchase> GetAllPurchases() => _purchaseRepository.GetAllPurchases();
+
         public void AddPurchase(Purchase purchase) => _purchaseRepository.AddPurchase(purchase);
+        
         public Purchase? GetPurchase(int purchaseId) => _purchaseRepository.GetPurchase(purchaseId);
     }
 }

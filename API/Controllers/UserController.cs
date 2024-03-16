@@ -24,7 +24,13 @@ public class UserController : ControllerBase {
         if(user == null)
             return NotFound();
 
-        return user;
+        return Ok(user);
+    }
+
+    [HttpPost]
+    public IActionResult Create([FromBody] User user) {            
+        _userService.AddUser(user);
+        return CreatedAtAction(nameof(Get), new { userId = user.UserId }, user);
     }
 
     [HttpPut("{userId}")]

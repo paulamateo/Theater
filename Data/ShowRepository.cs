@@ -51,8 +51,6 @@ namespace Theater.Data {
             return _context.Sessions.Where(s => s.ShowId == showId).ToList();
         }
 
-
-        //GENRES
         public List<string> GetAllGenres() {
             return _context.Shows.Select(s => s.Genre).Distinct().ToList()!;
         }

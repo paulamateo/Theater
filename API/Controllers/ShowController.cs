@@ -28,14 +28,13 @@ public class ShowController : ControllerBase {
         return show;
     }
 
-    [HttpGet("ByName/{title}")]
-    public ActionResult<Show> GetByTitle(string title) {
+    [HttpGet("search/")]
+    public ActionResult<IEnumerable<Show>> SearchShowByName ([FromQuery] string title) {
         var show = _showService.GetShowByTitle(title);
-
         if(show == null)
             return NotFound();
 
-        return show;
+        return Ok(show); 
     }
 
     [HttpGet("{showId}/Session")]
