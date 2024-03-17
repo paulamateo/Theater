@@ -36,7 +36,7 @@ spec:
         fsGroup: 1000
       containers:
       - name: docker-compose-dotnet-core-and-mssql-db
-        image: 381492085613.dkr.ecr.us-east-1.amazonaws.com/demo:docker-compose-dotnet-core-and-mssql-db
+        image: paulamateo/theater-db
         env:
         - name: MSSQL_PID
           value: "Express"
